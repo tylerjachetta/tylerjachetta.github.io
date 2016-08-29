@@ -44,22 +44,22 @@
 	
 
 	<script>
-		// set score
+		// initalize score
 		var score = 0, score2 = 0;
 		
 		// create card deck object
      	   	var cardDeck = $("#cardtray").playingCards();
         
-        // shuffle card objects
+        	// shuffle card objects
       		cardDeck.shuffle();
 
 		function startRound() 
 		{
-			document.getElementById('startButton').style.display = 'none'; 
+			document.getElementById('startButton').style.display = 'none'; //Makes game interface visibile
 			document.getElementById('hitButton').style.visibility = 'visible'; 
 			document.getElementById('stayButton').style.visibility = 'visible'; 
 
-			addCardPlayerDeck();
+			addCardPlayerDeck();//Adds two cards to player's and dealer's deck
 			addCardPlayerDeck();
 			addCardDealerDeck();
 			addCardDealerDeck();
@@ -102,7 +102,8 @@
 			}
 			else
 			{
-				score += Number(card.rank); // score--;
+				score += Number(card.rank); 
+				//Uses existing property within the object to calculate score for # cards
 			}
 
 			if(score > 21)
@@ -117,7 +118,7 @@
 		{
 			if ( ( card.rank == 'Q' ) || (card.rank == 'K') || (card.rank == 'J'))
 			{
-				score2 += 10; // score++;
+				score2 += 10; 
 				
 			} 
 			else if ( card.rank == 'A' )
@@ -133,7 +134,7 @@
 			}
 			else
 			{
-				score2 += Number(card.rank); // score--;
+				score2 += Number(card.rank); 
 			}
 
 			if(score2 > 21)
