@@ -42,16 +42,16 @@
 	<h4 id="scoreboard2">
 	</h4>
 	
-	<!-- step 4: create game flow in javascript --> 
+
 	<script>
 		// set score
 		var score = 0, score2 = 0;
 		
 		// create card deck object
-        var cardDeck = $("#cardtray").playingCards();
+     	   	var cardDeck = $("#cardtray").playingCards();
         
         // shuffle card objects
-        cardDeck.shuffle();
+      		cardDeck.shuffle();
 
 		function startRound() 
 		{
@@ -59,46 +59,28 @@
 			document.getElementById('hitButton').style.visibility = 'visible'; 
 			document.getElementById('stayButton').style.visibility = 'visible'; 
 
-			// draw one card object from deck
-			var card1 = cardDeck.draw();
-			var card2 = cardDeck.draw();
-
-			var dcard1 = cardDeck.draw();
-			var dcard2 = cardDeck.draw();
-
-			// log card object to browser console for observing
-			console.log( card1 );
-			console.log( card2 );
-			getCardValue(card1);
-			getCardValue(card2);
-
-			getCardValueD(dcard1);
-			getCardValueD(dcard2);
-
-			// use conditional statement, if, to decide scoring
-			
-			
-			// output score
+			addCardPlayerDeck();
+			addCardPlayerDeck();
+			addCardDealerDeck();
+			addCardDealerDeck();
+		}
+		
+		function addCardPlayerDeck()
+		{
+			var newCard = cardDeck.draw();
+			getCardValue (newCard);
 			$('#scoreboard').html( score );
+			markup = newCard.getHTML();
+			$('#cardtray').append( markup );
+		}
+		function addCardDealerDeck()
+		{
+			var newCard = cardDeck.draw();
+			getCardValueD (newCard);
 			$('#scoreboard2').html( score2 );
-
-
-			// output html for card drawn
-			var markup = card1.getHTML();
-			$('#cardtray').append( markup );
-
-			var markup = card2.getHTML();
-			$('#cardtray').append( markup );
-
-			var markup = dcard1.getHTML();
-			$('#cardtray2').append( markup );
-
-			var markup = dcard2.getHTML();
+			markup = newCard.getHTML();
 			$('#cardtray2').append( markup );
 		}
-
-		
-
 		function getCardValue (card)
 		{
 			if ( ( card.rank == 'Q' ) || (card.rank == 'K') || (card.rank == 'J'))
@@ -109,7 +91,14 @@
 			else if ( card.rank == 'A' )
 			{
 
-				score++; // score--;
+				if(score+11 > 21)
+				{
+					score++;
+				}
+				else 
+				{
+					score += 11;
+				}
 			}
 			else
 			{
@@ -133,7 +122,14 @@
 			} 
 			else if ( card.rank == 'A' )
 			{
-				score2++; // score--;
+				if(score2+11 > 21)
+				{
+					score2++;
+				}
+				else 
+				{
+					score2 += 11;
+				}
 			}
 			else
 			{
@@ -147,11 +143,7 @@
 		}
 		function hit ()
 		{
-			var newCard = cardDeck.draw();
-			getCardValue (newCard);
-			$('#scoreboard').html( score );
-			markup = newCard.getHTML();
-			$('#cardtray').append( markup );
+			addCardPlayerDeck();
 
 			hitD();
 		}
@@ -159,15 +151,10 @@
 		function hitD ()
 		{
 			var chance = Math.floor((Math.random() * 10) + 1);
-			console.log(chance);
 			
 			if(score2 <= 10)
 			{
-				var newCard = cardDeck.draw();
-				getCardValueD (newCard);
-				$('#scoreboard2').html( score2 );
-				markup = newCard.getHTML();
-				$('#cardtray2').append( markup );
+				addCardDealerDeck();
 			}
 			else if (score2 < 17)
 			{
@@ -176,11 +163,7 @@
 
 				if(chance < 7)
 				{
-					var newCard = cardDeck.draw();
-					getCardValueD (newCard);
-					$('#scoreboard2').html( score2 );
-					markup = newCard.getHTML();
-					$('#cardtray2').append( markup );
+					addCardDealerDeck();
 				}
 			}
 		
@@ -194,12 +177,16 @@
 		}
 
 		function stay()
-		{
-			
-			if(score > score2)
+		{	
+			if (score2 > 21 && score < 22)
+			{
+				win();
+			} 
+			else if(score > score2 && score < 22)
 			{
 				hitD();
 				win();
+				stay();
 			}
 			else
 			{
