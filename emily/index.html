@@ -33,27 +33,6 @@
 	
 	<!-- Template core CSS -->
 	<link href="assets/css/template.css" rel="stylesheet">
-	<script>
-						$(document).ready(function() {
-						$('.popup-gallery').magnificPopup({
-							delegate: 'a',
-							type: 'image',
-							tLoading: 'Loading image #%curr%...',
-							mainClass: 'mfp-img-mobile',
-							gallery: {
-								enabled: true,
-								navigateByImgClick: true,
-								preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-							},
-							image: {
-								tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-								titleSrc: function(item) {
-									return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
-								}
-							}
-						});
-					});
-					</script>
 </head>
 <body>
 
@@ -88,9 +67,9 @@
 		
 					<li><a href="#">Home</a></li>
 		
-					<li><a href="about.html">About</a></li>
+					<li><a href="#">About</a></li>
 		
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="#">Contact</a></li>
 		
 				</ul>
 			</div>
@@ -112,7 +91,6 @@
 
 	</div>
 	<!-- /SIDEBAR -->
-
 	<!-- WRAPPER -->
 	<div class="wrapper">
 
@@ -123,7 +101,7 @@
 			<div class="hero-caption">
 				<div class="hero-text">
 					<h1 class="m-b-30">Emily Pearson</h1>
-					<h6 class="m-b-60">Best Girlo</h6>
+					<h6 class="m-b-60">Illustrator</h6>
 				</div>
 			</div>
 			<!-- /HERO TEXT -->
@@ -133,7 +111,6 @@
 
 		</section>
 		<!-- /HERO -->
-
 		<!-- PORTFOLIO -->
 		<section id="portfolio" class="module-sm">
 			<div class="container-fluid">
@@ -143,171 +120,152 @@
 					<div class="col-sm-12">
 						<ul id="filters" class="filters font-alt">
 							<li><a href="#" class="current" data-filter="*">All</a></li>
-							<li><a href="#" data-filter=".fashion">Fashion</a></li>
-							<li><a href="#" data-filter=".travel">Travel</a></li>
-							<li><a href="#" data-filter=".music">Music</a></li>
+							<li><a href="#" data-filter=".fashion">Sequential Art</a></li>
+							<li><a href="#" data-filter=".travel">Concept Art</a></li>
+							<li><a href="#" data-filter=".music">Other</a></li>
 							<li><a href="#" data-filter=".video">Video</a></li>
 						</ul>
 					</div>
 				</div>
 				<!-- /FILTERS -->
-				<div class="popup-gallery">
-	<a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="The Cleaner"><img src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg" width="75" height="75"></a>
-	<a href="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg" title="Winter Dance"><img src="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_s.jpg" width="75" height="75"></a>
-	<a href="http://farm9.staticflickr.com/8225/8558295635_b1c5ce2794_b.jpg" title="The Uninvited Guest"><img src="http://farm9.staticflickr.com/8225/8558295635_b1c5ce2794_s.jpg" width="75" height="75"></a>
-	<a href="http://farm9.staticflickr.com/8383/8563475581_df05e9906d_b.jpg" title="Oh no, not again!"><img src="http://farm9.staticflickr.com/8383/8563475581_df05e9906d_s.jpg" width="75" height="75"></a>
-	<a href="http://farm9.staticflickr.com/8235/8559402846_8b7f82e05d_b.jpg" title="Swan Lake"><img src="http://farm9.staticflickr.com/8235/8559402846_8b7f82e05d_s.jpg" width="75" height="75"></a>
-	<a href="http://farm9.staticflickr.com/8235/8558295467_e89e95e05a_b.jpg" title="The Shake"><img src="http://farm9.staticflickr.com/8235/8558295467_e89e95e05a_s.jpg" width="75" height="75"></a>
-	<a href="http://farm9.staticflickr.com/8378/8559402848_9fcd90d20b_b.jpg" title="Who's that, mommy?"><img src="http://farm9.staticflickr.com/8378/8559402848_9fcd90d20b_s.jpg" width="75" height="75"></a>
-	</div>
+
 				<div class="works-grid-wrapper">
+
 					<div id="works-grid" class="works-grid works-grid-gutter">
-						<div class="gallery">
 
 						<!-- PORTFOLIO ITEM -->
 						<article class="work-item travel video">
-							<div class="work-wrapper">
-								<div class="work-thumbnail">
-								<a class="image-popup-vertical-fit image left" href="http://cdn.ndtv.com/tech/images/gadgets/big_apple_logo_reuters.jpg" title="Feres Henteti">
-									<img src="http://cdn.ndtv.com/tech/images/gadgets/big_apple_logo_reuters.jpg" alt="">
-									</a>
+							<a href="assets/images/portfolio-1.jpg" class="image-popup-vertical-fit">
+								<div class="work-wrapper">
+									<div class="work-thumbnail">
+											<img src="assets/images/portfolio-1.jpg" alt="">
+									</div>
+									<div class="work-caption">
+										<h3 class="work-title font-alt">Montures</h3>
+										<span class="work-category font-serif">Travel, Video</span>
+									</div>
 								</div>
-								<div class="work-caption">
-									<h3 class="work-title font-alt">Montures</h3>
-									<span class="work-category font-serif"><a href="http://cdn.ndtv.com/tech/images/gadgets/big_apple_logo_reuters.jpg">Travel, Video</a></span>
-								</div>
-								<a href="portfolio-single-1.html" class="work-link"></a>
-							</div>
+							</a>
 						</article>
 						<!-- /PORTFOLIO ITEM -->
 
 						<!-- PORTFOLIO ITEM -->
 						<article class="work-item fashion">
-							<div class="work-wrapper">
-								<div class="work-thumbnail">
-									<img src="http://pre08.deviantart.net/fb2e/th/pre/i/2016/141/d/0/continuity_inks__page_5_by_emishly-da3awz8.jpg" alt="">
+							<a href="assets/images/portfolio-8.jpg" class="image-popup-vertical-fit">
+								<div class="work-wrapper">
+									<div class="work-thumbnail">
+										<img src="assets/images/portfolio-8.jpg" alt="">
+									</div>
+									<div class="work-caption">
+										<h3 class="work-title font-alt">Rambler & Co</h3>
+										<span class="work-category font-serif">Fashion</span>
+									</div>
 								</div>
-								<div class="work-caption">
-									<h3 class="work-title font-alt">Rambler & Co</h3>
-									<span class="work-category font-serif"><a href="#">Fashion</a></span>
-								</div>
-								<a href="portfolio-single-1.html" class="work-link"></a>
-							</div>
+							</a>
 						</article>
 						<!-- /PORTFOLIO ITEM -->
 
 						<!-- PORTFOLIO ITEM -->
 						<article class="work-item music">
-							<div class="work-wrapper">
-								<div class="work-thumbnail">
-
-									<img src="assets/images/portfolio-2.jpg" alt="">
+							<a href="assets/images/portfolio-2.jpg" class="image-popup-vertical-fit">
+								<div class="work-wrapper">
+									<div class="work-thumbnail">
+										<img src="assets/images/portfolio-2.jpg" alt="">
+									</div>
+									<div class="work-caption">
+										<h3 class="work-title font-alt">Pink Lips</h3>
+										<span class="work-category font-serif">Music</span>
+									</div>
 								</div>
-								<div class="work-caption">
-									<h3 class="work-title font-alt">Pink Lips</h3>
-									<span class="work-category font-serif"><a href="#">Music</a></span>
-								</div>
-								<a href="portfolio-single-1.html" class="work-link"></a>
-							</div>
+							</a>
 						</article>
 						<!-- /PORTFOLIO ITEM -->
 
 						<!-- PORTFOLIO ITEM -->
 						<article class="work-item fashion">
-							<div class="work-wrapper">
-								<div class="work-thumbnail">
-									<img src="http://i.imgur.com/VcjLYU2.jpg alt="">
+							<a href="assets/images/portfolio-3.jpg" class="image-popup-vertical-fit">
+								<div class="work-wrapper">
+									<div class="work-thumbnail">
+										<img src="assets/images/portfolio-3.jpg" alt="">
+									</div>
+									<div class="work-caption">
+										<h3 class="work-title font-alt">Brother</h3>
+										<span class="work-category font-serif">Fashion</span>
+									</div>
 								</div>
-								<div class="work-caption">
-									<h3 class="work-title font-alt">Brother</h3>
-									<span class="work-category font-serif"><a href="#">Fashion</a></span>
-								</div>
-								<a href="portfolio-single-1.html" class="work-link"></a>
-							</div>
+							</a>
 						</article>
 						<!-- /PORTFOLIO ITEM -->
 
 						<!-- PORTFOLIO ITEM -->
 						<article class="work-item travel">
-							<div class="work-wrapper">
-								<div class="work-thumbnail">
-									<img src="assets/images/portfolio-4.jpg" alt="">
+							<a href="assets/images/portfolio-4.jpg" class="image-popup-vertical-fit">
+								<div class="work-wrapper">
+									<div class="work-thumbnail">
+										<img src="assets/images/portfolio-4.jpg" alt="">
+									</div>
+									<div class="work-caption">
+										<h3 class="work-title font-alt">Travel Bags</h3>
+										<span class="work-category font-serif">Travel</span>
+									</div>
 								</div>
-								<div class="work-caption">
-									<h3 class="work-title font-alt">Travel Bags</h3>
-									<span class="work-category font-serif"><a href="#">Travel</a></span>
-								</div>
-								<a href="portfolio-single-1.html" class="work-link"></a>
-							</div>
+							</a>
 						</article>
 						<!-- /PORTFOLIO ITEM -->
 
 						<!-- PORTFOLIO ITEM -->
 						<article class="work-item music">
-							<div class="work-wrapper">
-								<div class="work-thumbnail">
-									<img src="assets/images/portfolio-5.jpg" alt="">
+							<a href="assets/images/portfolio-5.jpg" class="image-popup-vertical-fit">
+								<div class="work-wrapper">
+									<div class="work-thumbnail">
+										<img src="assets/images/portfolio-5.jpg" alt="">
+									</div>
+									<div class="work-caption">
+										<h3 class="work-title font-alt">Workshop</h3>
+										<span class="work-category font-serif">Music</span>
+									</div>
 								</div>
-								<div class="work-caption">
-									<h3 class="work-title font-alt">Workshop</h3>
-									<span class="work-category font-serif"><a href="#">Music</a></span>
-								</div>
-								<a href="portfolio-single-1.html" class="work-link"></a>
-							</div>
+							</a>
 						</article>
 						<!-- /PORTFOLIO ITEM -->
 
 						<!-- PORTFOLIO ITEM -->
 						<article class="work-item travel">
-							<div class="work-wrapper">
-								<div class="work-thumbnail">
-									<img src="assets/images/portfolio-6.jpg" alt="">
+							<a href="assets/images/portfolio-6.jpg" class="image-popup-vertical-fit">
+								<div class="work-wrapper">
+									<div class="work-thumbnail">
+										<img src="assets/images/portfolio-6.jpg" alt="">
+									</div>
+									<div class="work-caption">
+										<h3 class="work-title font-alt">The Handkerchief</h3>
+										<span class="work-category font-serif">Travel</span>
+									</div>
 								</div>
-								<div class="work-caption">
-									<h3 class="work-title font-alt">The Handkerchief</h3>
-									<span class="work-category font-serif"><a href="#">Travel</a></span>
-								</div>
-								<a href="portfolio-single-1.html" class="work-link"></a>
-							</div>
+							</a>
 						</article>
 						<!-- /PORTFOLIO ITEM -->
 
 						<!-- PORTFOLIO ITEM -->
 						<article class="work-item fashion">
-							<div class="work-wrapper">
-								<div class="work-thumbnail">
-									<img src="assets/images/portfolio-7.jpg" alt="">
+							<a href="assets/images/portfolio-7.jpg" class="image-popup-vertical-fit">
+								<div class="work-wrapper">
+									<div class="work-thumbnail">
+										<img src="assets/images/portfolio-7.jpg" alt="">
+									</div>
+									<div class="work-caption">
+										<h3 class="work-title font-alt">Architecture</h3>
+										<span class="work-category font-serif">Fashion</span>
+									</div>
 								</div>
-								<div class="work-caption">
-									<h3 class="work-title font-alt">Architecture</h3>
-									<span class="work-category font-serif"><a href="#">Fashion</a></span>
-								</div>
-								<a href="portfolio-single-1.html" class="work-link"></a>
-							</div>
+							</a>
 						</article>
 						<!-- /PORTFOLIO ITEM -->
-						</div>
+
 					</div>
-					
+
 				</div><!-- works-grid-wrapper -->
 
-				<!-- SHOW MORE -->
-				<div class="row">
-					<div class="col-sm-12">
-
-						<div class="m-t-70 text-center">
-							<button id="show-more" class="btn btn-dark show-more">More works</button>
-						</div>
-
-					</div>
-				</div>
-				<!-- /SHOW MORE -->
-
-			</div>
-		</section>
 		<!-- /PORTFOLIO -->
-
-		<hr class="divider">
 
 		<!-- FOOTER -->
 
