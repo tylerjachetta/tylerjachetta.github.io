@@ -7,6 +7,18 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  */
+ button {
+    background-color: #00330d; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 .playingCard { /* to show the back of the card, hide the front */
 position: relative;
@@ -20,6 +32,11 @@ height: 5em;
 .playingCard > .front:hover
 {
 	background-color: #009999;
+}
+
+#backcard {
+	width: 80px;
+	height: 110px;
 }
 
 .playingCard .front {
