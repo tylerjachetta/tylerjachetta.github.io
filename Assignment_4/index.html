@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Solar System</title>
+      <link rel="stylesheet" href="jquery-ui-1.11.1/jquery-ui.css"/>
+      <script src="jquery-ui-1.11.1/external/jquery/jquery.js"></script>
+      <script src="jquery-ui-1.11.1/jquery-ui.js"></script>
+   </head>
+   <body>
+      <div id="progressbar"></div>
+      <div id="accordion">
+         <h3>About this assignment</h3>
+         <div>
+            <p>
+              An HTML page that provides an engaging user experience built around the interactions of dragging and dropping.
+            </p>
+         </div>
+         <h3>About the creator</h3>
+         <div>
+            <p>
+               Name: Tyler Jachetta<br>
+               Course Title: JavaScipt, Jquery, Ajax (CS 55.11) <br>
+               Date: 9/26/2016
+            </p>
+         </div>
+      </div>
+      <div id="sun" title="Sun">  
+      </div>
+      <div class="empty-planets">
+         <div class="planet" title="Neptune">
+            <p>8</p>
+         </div>
+         <div class="planet" title="Uranus">
+            <p>7</p>
+         </div>
+         <div class="planet" title="Saturn">
+            <p>6</p>
+         </div>
+         <div class="planet" title="Jupiter">
+            <p>5</p>
+         </div>
+         <div class="planet" title="Mars">
+            <p>4</p>
+         </div>
+         <div class="planet" title="Earth">
+            <p>3</p>
+         </div>
+         <div class="planet" title="Venus">
+            <p>2</p>
+         </div>
+         <div class="planet" title="Mercury">
+            <p>1</p>
+         </div>
+      </div>
+      <div class="ui-draggable planet earth" title="Earth">
+         <p>Earth</p>
+      </div>
+      <div class="ui-draggable planet mercury" title="Mercury">
+         <p>Mercury</p>
+      </div>
+      <div class="ui-draggable planet venus" title="Venus">
+         <p>Venus</p>
+      </div>
+      <div class="ui-draggable planet jupiter" title="Jupiter">
+         <p>Jupiter</p>
+      </div>
+      <div class="ui-draggable planet mars" title="Mars">
+         <p>Mars</p>
+      </div>
+      <div class="ui-draggable planet uranus" title="Uranus">
+         <p>Uranus</p>
+      </div>
+      <div class="ui-draggable planet saturn" title="Saturn">
+         <p>Saturn</p>
+      </div>
+      <div class="ui-draggable planet neptune" title="Neptune">
+         <p>Neptune</p>
+      </div>
+      <div id="dialog" title="You did it!">
+         <p>The planets are in the right place.</p>
+      </div>
+      <script type="text/javascript">
+         var progressValue = 0;
+         
+           	$( function() {
+          			$( ".ui-draggable" ).draggable();
+         		} );
+           	$( function() {
+          			$( "#progressbar" ).progressbar({
+           			 	value: progressValue
+         				});
+         		} );	
+           	
+           	$( function() {
+          			$( "#selectable" ).selectable();
+         		} );
+         
+         		$(".empty-planets > .planet").droppable(
+         {
+         // set accept drop function
+         accept: function( draggable ) {
+         	return $( this ).attr("title") == draggable.attr( "title" );
+         },
+         // set drop function to run if accept returns true
+         drop: function( event, ui) {
+         	var color = ui.draggable.css( "background-color" );
+         	$( this ).css( "background", color ).addClass( "filled" );
+         	ui.draggable.hide( "puff" );
+         	progressValue += 12.5;
+         	if ( $( ".filled" ).length == 8) {
+         		$( function() {
+          			$( "#dialog" ).dialog();
+         		} );		
+         		$( function() {
+    				$( document ).tooltip();
+  				} );			
+         	}
+         	$( function() {
+          			$( "#progressbar" ).progressbar({
+           			 	value: progressValue
+         				});
+         		} );			}
+         }
+         );
+         
+          $( function() {
+          $( "#accordion" ).accordion();
+         } );
+       	
+
+      </script>
+   </body>
+</html>
