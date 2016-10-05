@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Vaporwave Radio</title>
+      <script src="jquery-ui-1.11.1/external/jquery/jquery.js"></script>      
+      <link rel="stylesheet" href="jquery-ui-1.11.1/jquery-ui.css"/>
+      <script src="jquery-ui-1.11.1/jquery-ui.js"></script>
+      <script src="knob.js"></script>
+      <script src="wavesurfer/wavesurfer.min.js"></script>
+      <script src="wavesurfer/wavesurfer.regions.js"></script>
+      <link rel="stylesheet" href="magnific-popup.css"/>
+      <link rel="stylesheet" type="text/css" href="style.css">
+   </head>
+   
+   <body>
+   <script>
+    $( document ).ready(function() {
+    
+      $( "#exe" ).draggable({ handle: "#topbar" });
+      $('.image-popup-vertical-fit').magnificPopup({
+      type: 'image',
+      closeOnContentClick: true,
+      mainClass: 'mfp-img-mobile',
+      image: {
+        verticalFit: true
+      }
+        
+      });      
+    
+    });
+
+      </script>
+   <div id="galleryContainer">
+   <a class="image-popup-vertical-fit" href="images/1.gif" title="kurt.gif">
+  <img src="images/1.gif" width="75" height="75" >
+  </a>
+  <a class="image-popup-vertical-fit" href="images/2.gif" title="grid.gif">
+  <img src="images/2.gif" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/3.gif" title="vhs.gif">
+  <img src="images/3.gif" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/4.jpg" title="city.jpg">
+  <img src="images/4.jpg" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/5.gif" title="car.gif">
+  <img src="images/5.gif" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/6.gif" title="city2.jpg">
+  <img src="images/6.gif" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/7.gif" title="helmet.jpg">
+  <img src="images/7.gif" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/8.jpg" title="sunrise.jpg">
+  <img src="images/8.jpg" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/9.gif" title="city2.jpg">
+  <img src="images/9.gif" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/10.gif" title="grid3.jpg">
+  <img src="images/10.gif" width="75" height="75">
+  </a>
+  <a class="image-popup-vertical-fit" href="images/11.gif" title="grid4.jpg">
+  <img src="images/11.gif" width="75" height="75">
+  </a>
+  </div>
+    <div id="exe" class="ui-widget-content">
+        <div id="topbar" class="ui-widget-header">
+            <div id="title">
+              <p>vaporwave_radio.exe</p>
+            </div>
+            <div id="exit">
+                <p>X</p>
+            </div>
+        </div> 
+        <div id="bustContainer" />
+            <img src="bust.png">
+        </div> 
+        <div class="playerHolder">
+          <audio controls class="audioDemo" id="durationID" autoplay="True">
+          <source id="song" preload="auto" src="audio/macintosh plus - computing of lisa frank.mp3"> 
+          </audio>
+          <div id="titleContainer">
+               <p id="songTitle">macintosh plus - computing of lisa frank</p>
+          </div>
+          <div id="buttonContainer">
+            <button type="button" onclick="toggleMuteAudio()">
+                Mute
+            </button>
+          
+          </div>
+        <div id="volume">
+            <input type="text" value="0" data-width="150" data-cursor=true data-thickness=".5" data-fgColor="#AAAAAA" data-bgColor="#FFFFFF" data-displayInput="false">
+        </div>
+        <div id="demo">
+        
+                <div id="waveform">
+                </div>
+                
+          </div>
+    </div>
+    </div>
+    
+    <div id="taskbar">
+      <div id="time">
+          <p id="timeContainer">
+          </p>
+      </div>
+      <div id="start">
+          <p>
+            Start
+          </p>
+      </div>
+    </div>
+    <script src="jquery.magnific-popup.js"></script>
+   </body>
+   <script type="text/javascript">
+    var wavesurfer = Object.create(WaveSurfer);
+
+
+        $(function() {
+            console.log( "ready!" );
+        });
+
+        var playListIndex = 0;
+
+        var playList = [
+        "macintosh plus - computing of lisa frank",
+        "saint pepsi - cherry pepsi",
+        "vector graphics -  waiting"
+        ];
+
+        var playListDuration = [
+         440,
+         187,
+         143
+        ];
+
+        var playListURL = [
+         "http://files.sq10.net/music/vaporwave/list/MACINTOSH%20PLUS/MACINTOSH%20PLUS%20-%20FLORAL%20SHOPPE/02%20%E3%83%AA%E3%82%B5%E3%83%95%E3%83%A9%E3%83%B3%E3%82%AF420%20_%20%E7%8F%BE%E4%BB%A3%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC.mp3",
+        ];
+
+        var vid = document.getElementById("durationID");
+        var audio = $(".audioDemo");
+
+        delaySong();
+
+        console.log(playListDuration[playListIndex]);
+        function delaySong()
+        {
+            setTimeout(function()
+            { 
+               changeSong();
+            }, playListDuration[playListIndex] * 1000);
+        }
+
+        console.log(playListDuration[playListIndex] * 1005)
+        
+        
+        function changeSong()
+        {
+          if(playListIndex < playList.length - 1)
+          {
+            playListIndex++;
+          }
+          else
+          {
+            playListIndex = 0;
+          }
+          vid.src= "audio/" + playList[playListIndex] + ".mp3";
+          $("#songTitle").html(playList[playListIndex]);
+          vid.load();
+          vid.play();
+          delaySong();
+        } 
+        
+
+
+        function addEventHandlers(){
+            $("a.load").click(loadAudio);
+            $("a.start").click(startAudio);
+            $("a.forward").click(forwardAudio);
+            $("a.back").click(backAudio);
+            $("a.pause").click(pauseAudio);
+            $("a.stop").click(stopAudio);
+            $("a.volume-up").click(volumeUp);
+            $("a.volume-down").click(volumeDown);
+            $("a.mute").click(toggleMuteAudio);
+        }
+        var v, up = 0,
+        down = 0,
+        i = 0,
+
+        incr = function () {
+            i++;
+        }, decr = function () {
+            i--;
+            
+        };
+        $("input").knob({
+            min: 0,
+            max: 10,
+            stopper: true,
+              change: function () {
+              if (v > this.cv) 
+              {
+                  if (up) {
+                      decr();
+                      up = 0;
+                  } else {
+                      up = 1;
+                      down = 0;
+                      volumeDown();
+                  }
+              } else 
+              {
+                if (v < this.cv) 
+                {
+                    if (down) 
+                    {
+                        incr();
+                        down = 0;
+                    } else {
+                        down = 1;
+                        up = 0;
+                        volumeUp();
+                    }
+                }
+            }
+            v = this.cv;
+        }
+        });
+
+        function startAudio(){
+            audio.trigger('play');
+        }
+
+        function pauseAudio(){
+            audio.trigger('pause');
+        }
+
+        function volumeUp(){
+            var volume = audio.prop("volume")+ 0.1;
+            if(volume > 1){
+                volume = 1;
+            }
+            audio.prop("volume",volume);
+        }
+
+        function volumeDown(){
+            var volume = audio.prop("volume")-0.1;
+            if(volume <0){
+                volume = 0;
+            }
+            audio.prop("volume",volume);
+        }
+
+        function toggleMuteAudio(){
+            audio.prop("muted",!audio.prop("muted"));
+        }
+        
+        document.addEventListener('DOMContentLoaded', function () {
+          // Init
+          wavesurfer.init({
+        container: document.querySelector('#waveform'),
+        waveColor: 'grey',
+        progressColor: "rgba(223, 51, 253, 0.26)",
+        mediaType: 'audio',
+        interact: false,
+        pixelRatio: .65,
+        height: 100
+    });
+          
+          wavesurfer.load("http://files.sq10.net/music/vaporwave/list/MACINTOSH%20PLUS/MACINTOSH%20PLUS%20-%20FLORAL%20SHOPPE/02%20%E3%83%AA%E3%82%B5%E3%83%95%E3%83%A9%E3%83%B3%E3%82%AF420%20_%20%E7%8F%BE%E4%BB%A3%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC.mp3");
+          wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
+          wavesurfer.setVolume(0);
+          });
+
+
+      </script>
+</html>
