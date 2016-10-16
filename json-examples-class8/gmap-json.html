@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Google Maps JSON Marker Example</title>
+	<!-- the css rules force map-canvas div to have some dimensions! -->
+	<style type="text/css">
+		html { height:100% }
+		body { height:100%; margin:0; padding:0; }
+		#map-canvas { height:90%; width:90%; margin:5%; }
+	</style>
+	<!-- load google map api javascript library -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANwuVysbRlA9s-4mgKvkdxL0ODklj-Hhg"></script>
+	<!-- our custom script to render map + markers -->
+	<script>
+	// declare json variable outside of function to make sure
+	// all of javascript in this entire page can access variable's contents
+	var jsondata;
+	
+	jsondata = [
+		{
+			"title": "Burj Kalifa",
+			"lat": 25.1971,
+			"lng": 55.2741
+		},
+		{
+			"title": "Santa Rosa, CA",
+			"lat": 38.4486,
+			"lng": -122.7047
+		},
+		{
+			"title": "Barcelona, Spain",
+			"lat": 41.383,
+			"lng": 2.183
+		}
+	];
+	
+	// createMap() function creates google map, markers and infowindow
+	function createMap() {
+		// mapOptions hold gmap center and zoom 
+		var mapOptions = {
+			center: new google.maps.LatLng(37.786421, -122.399369),
+			zoom: 10
+		};
+		// map1 is reference to rendered gmap
+		var map1 = new google.maps.Map(
+			document.getElementById("map-canvas"),
+			mapOptions
+		);
+		
+		// loop through each record in JSON data structure
+		// a js for loop requires 3 parameters to configure it:
+		// parameter 1: declare a variable to hold a counter for loop
+		// parameter 2: define a condition that lets loop continue
+		// parameter 3: how to modify counter after each loop is run
+		for (var counter = 0; counter < jsondata.length; counter=counter+1 ) {
+			// inside curlies, we use google map api to create marker
+			// 1: get current data record from our JSON data structure
+			var data = jsondata[counter];
+			
+			// 2: now I need to create a google map point
+			// (latitude and longitude) for placing marker
+			var marker_position = new google.maps.LatLng( 
+				data.lat, 
+				data.lng 
+			);
+			
+			// 3: draw marker on our map
+			var marker = new google.maps.Marker({
+				position: marker_position,
+				map: map1,
+				title: data.title
+			});			
+			
+		}
+		
+	}
+	</script>
+</head>
+<body onload="createMap();">
+	<!-- create an html element to contain google map -->
+	<div id="map-canvas"></div>
+</body>
+</html>

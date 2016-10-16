@@ -1,0 +1,10 @@
+[ {
+    "type" : "Ford",
+    "model" : "C Max",
+    "color" : "red"
+} ,
+{
+    "type" : "Honda",
+    "model" : "Civic",
+    "color" : "white"
+} ]

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple JSON Example</title>
+	<!-- load jquery javascript file -->
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+	<!-- create an unordered list to hold content from loaded data -->
+	<ul id="dynamic-list"></ul>
+	
+	<!-- our custom script to load JSON -->
+	<script>
+	// jQuery getJSON function takes two parameters
+	// 1: url to external json file
+	// 2: a function to run after json file has been successfully loaded
+	$.getJSON( "cars.json",
+		function( returnedData ) {
+			// code in this block runs once JSON data is loaded
+			console.log( returnedData );
+			
+			// loop through each item in array of JSON data
+			for (var counter = 0; counter < returnedData.length; counter++ ) {
+				// inside loop, output json data fields into #dynamic-list
+				$('#dynamic-list').append(
+					'<li>' + 
+					returnedData[counter].color +
+					' ' +
+					returnedData[counter].type +
+					'</li>'
+				);
+			}
+		}
+	 );			
+	</script>
+
+</body>
+</html>

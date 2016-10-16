@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Google Maps JSON Marker Example</title>
+	<!-- the css rules force map-canvas div to have some dimensions! -->
+	<style type="text/css">
+		html { height:100% }
+		body { height:100%; margin:0; padding:0; }
+		#map-canvas { height:90%; width:90%; margin:5%; }
+	</style>
+	<!-- load google map api javascript library -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANwuVysbRlA9s-4mgKvkdxL0ODklj-Hhg"></script>
+	<!-- load jquery javascript file -->
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-- our custom script to load JSON and render map + markers -->
+	<script>
+	// declare json variable outside of function to make sure
+	// all of javascript in this entire page can access variable's contents
+	var jsondata;
+	
+	// loadjson() function gets external json data from file
+	function loadjson() {
+		// jQuery getJSON function takes two parameters
+		// 1: url to external json file
+		// 2: a function to run after json file has been successfully loaded
+		$.getJSON( "map.json",
+			function( returnedData ) {
+				// next line copies json data loaded in local var
+				// into a global variable that createMap() function can access
+				jsondata = returnedData;
+				createMap();
+			}
+		 );
+	}
+	
+	// createMap() function creates google map, markers and infowindow
+	function createMap() {
+		// mapOptions hold gmap center and zoom 
+		var mapOptions = {
+			center: new google.maps.LatLng(37.786421, -122.399369),
+			zoom: 10
+		};
+		// map1 is reference to rendered gmap
+		var map1 = new google.maps.Map(
+			document.getElementById("map-canvas"),
+			mapOptions
+		);
+		
+		
+		// before we draw any markers on map, let's create rectangle
+		// this rectangle will eventually contain all markers positions
+		// and with rectangle, we will able to zoom out map to fit
+		var marker_bounds = new google.maps.LatLngBounds();
+		
+		// create a google map infowindow object using google map api
+		var infowindow = new google.maps.InfoWindow();
+		
+		// loop through each record in JSON data structure
+		// a js for loop requires 3 parameters to configure it:
+		// parameter 1: declare a variable to hold a counter for loop
+		// parameter 2: define a condition that lets loop continue
+		// parameter 3: how to modify counter after each loop is run
+		for (var counter = 0; counter < jsondata.length; counter=counter+1 ) {
+			// inside curlies, we use google map api to create marker
+			// 1: get current data record from our JSON data structure
+			var data = jsondata[counter];
+			
+			// 2: now I need to create a google map point
+			// (latitude and longitude) for placing marker
+			var marker_position = new google.maps.LatLng( 
+				data.lat, 
+				data.lng 
+			);
+			
+			// 3: draw marker on our map
+			var marker = new google.maps.Marker({
+				position: marker_position,
+				map: map1,
+				title: data.title
+			});
+			
+			// 4: extend bounds rectangle to include marker point
+			marker_bounds.extend( marker_position );
+			
+			// 5: attach a click event to marker, and connect to infowindow
+			// using JavaScript closure syntax, a closure makes a snapshot
+			// of current values in variables passed to closure
+			// so when click event handler function runs with correct values
+			(function( marker, data ) {
+				// addListener function takes 3 parameters
+				// 1: a reference to map object we want to attach to
+				// 2: event we want to intercept
+				// 3: a function to run when marker is clicked
+				google.maps.event.addListener( marker, "click", 
+					function() {
+						infowindow.setContent( data.description );
+						infowindow.open( map1, marker );
+					}
+				);
+			}
+			)( marker, data );
+			
+			
+		}
+		
+		// rezoom map to marker bounds we created in loop
+		map1.fitBounds( marker_bounds );
+		
+	}
+	</script>
+</head>
+<body onload="loadjson();">
+	<!-- create an html element to contain google map -->
+	<div id="map-canvas"></div>
+	<!-- create an unordered list to hold content from loaded data -->
+	<ul id="marker-list"></ul>
+</body>
+</html>
