@@ -47,14 +47,16 @@
 		{
 			var data = markerData[counter];
 			var markerPosition = new google.maps.LatLng(data.lat, data.lng);
-
-			var marker = new google.maps.Marker({
+			
+			(function(){ 
+				var marker = new google.maps.Marker({
     			position: markerPosition,
     			map: map,
     			title: data.title,
     			animation: google.maps.Animation.DROP
   			});
-
+  			}, 3000
+			
   			(function( marker, data ) {
 				google.maps.event.addListener( marker, "click", 
 					function() {
