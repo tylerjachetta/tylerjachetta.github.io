@@ -26,10 +26,11 @@
 				// next line copies json data loaded in local var
 				// into a global variable that createMap() function can access
 				markerData = returnedData;
+				console.log(markerData[0].title)
+
 				createMap();
 			}
 		 );
-	console.log(markerData[0].title)
 
 	function createMap() {
 		var mapCoords = new google.maps.LatLng(49.108552, 15.459526);
