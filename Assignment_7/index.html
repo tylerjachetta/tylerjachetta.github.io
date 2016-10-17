@@ -7,7 +7,6 @@
 	<script>
 	var map;
 	var markerData;
-
 	function loadjson() {
 		$.getJSON( "markers.json",
 				function( returnedData ) {
@@ -18,9 +17,9 @@
 				}
 			 );
 	}
-
 	function createMap() 
 	{
+		console.log(markerData[0].title)
 		var mapOptions = {
 			zoom: 5,
 			center: new google.maps.LatLng(49.108552, 15.459526),
@@ -40,9 +39,7 @@
 			{"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"off"}]}]
 		};
 		map = new google.maps.Map(document.getElementById("map-container"), mapOptions);
-
 		var infowindow = new google.maps.InfoWindow();
-
 		for (var counter = 0; counter < markerData.length; counter++ ) 
 		{
 			var data = markerData[counter];
@@ -55,7 +52,6 @@
 			animation: google.maps.Animation.DROP
 				});
 		
-
   			(function( marker, data ) {
 				google.maps.event.addListener( marker, "click", 
 					function() {
@@ -66,10 +62,7 @@
 			}
 			)( marker,  data );
 		}
-
 	}
-
-
 	</script>
 </head>
 <body onload="loadjson();">
