@@ -21,7 +21,6 @@
 
 	function createMap() {
 		console.log(markerData[0].title)
-
 		var mapOptions = {
 			zoom: 5,
 			center: new google.maps.LatLng(49.108552, 15.459526),
@@ -46,24 +45,25 @@
 
 		for (var counter = 0; counter < markerData.length; counter++ ) 
 		{
-			var markerPosition = new google.maps.LatLng(markerData[counter].lat, markerData[counter].lng);
+			var data = markerData[counter];
+			var markerPosition = new google.maps.LatLng(data.lat, data.lng);
 
 			var marker = new google.maps.Marker({
     			position: markerPosition,
     			map: map,
-    			title: markerData[counter].title,
+    			title: data.title,
     			animation: google.maps.Animation.DROP
   			});
 
-  			(function( marker, markerData[counter] ) {
+  			(function( marker, data ) {
 				google.maps.event.addListener( marker, "click", 
 					function() {
-						infowindow.setContent( markerData.description );
+						infowindow.setContent( data.description );
 						infowindow.open( map, marker );
 					}
 				);
 			}
-			)( marker,  markerData[counter] );
+			)( marker,  data );
 		}
 
 
