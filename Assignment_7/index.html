@@ -4,6 +4,34 @@
 	<meta charset="utf-8">
 	<title>Best places to eat in Santa Rosa</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script>
+	var map;
+	var markerData;
+
+	function loadjson() {
+		$.getJSON( "markers.json",
+				function( returnedData ) {
+					// next line copies json data loaded in local var
+					// into a global variable that createMap() function can access
+					markerData = returnedData;
+					console.log(markerData[0].title)
+					createMap();
+				}
+			 );
+	}
+
+	function createMap() {
+		var mapOptions = {
+			zoom: 5,
+			center: new google.maps.LatLng(49.108552, 15.459526),
+			disableDefaultUI: true,
+			styles:[{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]},{"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"off"}]}]
+		};
+		map = new google.maps.Map(document.getElementById("map-container"), mapOptions);
+	}
+
+
+	</script>
 </head>
 <body onload="loadjson();">
     <header>
@@ -18,36 +46,6 @@
 	<!-- Load the Google Maps API library -->
 	<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=geometry&key=AIzaSyANwuVysbRlA9s-4mgKvkdxL0ODklj-Hhg"></script>
 	
-	<script>
-	var map;
-	var markerData;
 
-	function loadjson() {
-		$.getJSON( "markers.json",
-				function( returnedData ) {
-					// next line copies json data loaded in local var
-					// into a global variable that createMap() function can access
-					markerData = returnedData;
-					createMap();
-					console.log(markerData[0].title)
-				}
-			 );
-	}
-
-	function createMap() {
-		var mapCoords = new google.maps.LatLng(49.108552, 15.459526);
-
-		var mapOptions = {
-			zoom: 5,
-			center: mapCoords,
-			disableDefaultUI: true,
-			styles:[{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]},{"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"off"}]}]
-		};
-		map = new google.maps.Map(document.getElementById("map-container"), mapOptions);
-	}
-
-	createMap();
-
-	</script>
 </body>
 </html>
