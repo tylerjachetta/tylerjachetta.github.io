@@ -5,7 +5,7 @@
 	<title>Best places to eat in Santa Rosa</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body onload="loadjson();">
     <header>
         <h1>Historical Events of WWII</h1>
     </header>
@@ -21,16 +21,18 @@
 	<script>
 	var map;
 	var markerData;
-	$.getJSON( "markers.json",
-			function( returnedData ) {
-				// next line copies json data loaded in local var
-				// into a global variable that createMap() function can access
-				markerData = returnedData;
-				console.log(markerData[0].title)
 
-				createMap();
-			}
-		 );
+	function loadjson() {
+		$.getJSON( "markers.json",
+				function( returnedData ) {
+					// next line copies json data loaded in local var
+					// into a global variable that createMap() function can access
+					markerData = returnedData;
+					createMap();
+					console.log(markerData[0].title)
+				}
+			 );
+	}
 
 	function createMap() {
 		var mapCoords = new google.maps.LatLng(49.108552, 15.459526);
