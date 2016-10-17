@@ -43,7 +43,7 @@
     			animation: google.maps.Animation.DROP
   			});
 
-  			(function( marker, data ) {
+  			(function( marker, markerData[counter] ) {
 				google.maps.event.addListener( marker, "click", 
 					function() {
 						infowindow.setContent( markerData.description );
