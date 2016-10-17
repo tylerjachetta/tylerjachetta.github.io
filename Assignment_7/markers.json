@@ -58,6 +58,18 @@
 		"lat": 34.3852, 
 		"lng": 132.4553,
 		"description": "<h3>Atomic Bomb Dropped on Hiroshima and Nagasaki Three Days Later</h3><h4>August 6th, 1945</h4><p>After relentlessly bombing Japan, they would still not surrender. Truman decided to use the atomic bomb to spare the American lives that would have been lost should we have chosen to invade Japan on foot. On August 6, 1945, US pilots dropped an atomic bomb on Hiroshima. The USSR declared war on Japan three days later, and the US dropped a second atomic bomb on Nagasaki. The Japanese finally surrendered.</p>"
+	},
+	{
+		"title": "The Battle of Berlin",
+		"lat": 52.5200, 
+		"lng": 13.4050,
+		"description": "<h3>The Battle of Berlin</h3><h4>April 16, 1945 </h4><p>The final chapter in the destruction of Hitler's Third Reich began on April 16, 1945 when Stalin unleashed the brutal power of 20 armies, 6,300 tanks and 8,500 aircraft with the objective of crushing German resistance and capturing Berlin. By prior agreement, the Allied armies (positioned approximately 60 miles to the west) halted their advance on the city in order to give the Soviets a free hand. The depleted German forces put up a stiff defense, initially repelling the attacking Russians, but ultimately succumbing to overwhelming force. By April 24 the Soviet army surrounded the city slowly tightening its stranglehold on the remaining Nazi defenders. Fighting street-to-street and house-to-house, Russian troops blasted their way towards Hitler's chancellery in the city's center.</p>"
+	},
+	{
+		"title": "The Death of President Franklin Roosevelt",
+		"lat": 34.3852, 
+		"lng": 132.4553,
+		"description": "<h3>Atomic Bomb Dropped on Hiroshima and Nagasaki Three Days Later</h3><h4>August 6th, 1945</h4><p>After relentlessly bombing Japan, they would still not surrender. Truman decided to use the atomic bomb to spare the American lives that would have been lost should we have chosen to invade Japan on foot. On August 6, 1945, US pilots dropped an atomic bomb on Hiroshima. The USSR declared war on Japan three days later, and the US dropped a second atomic bomb on Nagasaki. The Japanese finally surrendered.</p>"
 	}
 
 ]
