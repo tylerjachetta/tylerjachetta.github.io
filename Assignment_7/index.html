@@ -47,6 +47,7 @@
 		{
 			var data = markerData[counter];
 			var markerPosition = new google.maps.LatLng(data.lat, data.lng);
+			
 			setTimeout(function()
 			{
 				var marker = new google.maps.Marker({
@@ -56,8 +57,6 @@
     			animation: google.maps.Animation.DROP
   				});
 			 }, 300);
-
-			
 
   			(function( marker, data ) {
 				google.maps.event.addListener( marker, "click", 
