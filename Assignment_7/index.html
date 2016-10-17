@@ -26,7 +26,22 @@
 			zoom: 5,
 			center: new google.maps.LatLng(49.108552, 15.459526),
 			disableDefaultUI: true,
-			styles:[{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]},{"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"off"}]}]
+			styles:[
+			{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},
+			{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},
+			{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},
+			{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},
+			{"featureType":"road","elementType":"all","stylers":[{"visibility":"off"}]},
+			{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"off"}]},
+			{"featureType":"road.arterial","elementType":"geometry","stylers":[{"visibility":"off"}]},
+			{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"off"}]},
+			{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]},
+			{"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"visibility":"off"}]},
+			{"featureType":"administrative.land_parcel","elementType":"labels","stylers":[{"visibility":"off"}]},
+			{"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"off"}]}.
+			{"featureType": "administrative","elementType": "geometry","stylers": [{"hue": "#00ff2b" }
+        ]
+      }]
 		};
 		map = new google.maps.Map(document.getElementById("map-container"), mapOptions);
 
