@@ -12,11 +12,11 @@
 	var map;
 	var markerData;
 	function loadjson() {
-		$.getJSON( "map.json",
+		$.getJSON( "markers.json",
 			function( returnedData ) {
 				// next line copies json data loaded in local var
 				// into a global variable that createMap() function can access
-				markerData = returnedData;
+				jsondata = returnedData;
 				createMap();
 			}
 		 );
@@ -53,6 +53,7 @@
     			title: data.title,
     			animation: google.maps.Animation.DROP
   			});
+  			
   			(function( marker, data ) {
 				google.maps.event.addListener( marker, "click", 
 					function() {
