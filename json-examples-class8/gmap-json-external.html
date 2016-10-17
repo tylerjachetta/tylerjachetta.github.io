@@ -28,12 +28,12 @@
 				// next line copies json data loaded in local var
 				// into a global variable that createMap() function can access
 				jsondata = returnedData;
+				console.log(jsondata[0].description)
 				createMap();
 			}
 		 );
 	}
 	
-	console.log(jsondata[0].description)
 	// createMap() function creates google map, markers and infowindow
 	function createMap() {
 		// mapOptions hold gmap center and zoom 
