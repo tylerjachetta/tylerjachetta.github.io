@@ -15,7 +15,10 @@
 		"description": "<h3>Battle of Britain</h3>
 		<h4>July 1, 1940</h4>
 		<p>Operation Sea lion was Germany's strategy for attacking Britain. The German Luftwaffe (Airforce) would attack the Royal Air Force.  The UK used radar to figure out where the Germans would attack from. While the UK lost 1,000 planes, the Germans lost 1,700.  The Germans bombed everything they could, but ultimately radar saved the UK from falling to Germany.</p>"
-	},
+	}
+
+	/*
+	,
 	{
 		"title": "Germany Invades USSR Opening Eastern Front",
 		"lat": 48.7099, 
@@ -31,5 +34,5 @@
 		"description": "<h3>Germany Invades USSR Opening Eastern Front</h3>
 		<h4>December 7, 1941</h4>
 		<p>Japan attacked the US naval base at Pearl Harbor.  They attacked in two waves. The first wave was the main attack to take out ships and airfield.  The second wave they would finish off whatever was left. The objective was to prevent  US from influencing Japan's war effort in southeast Asia.  This attack led to FDR asking congress to declare war on Japan on December 8, 1941.</p>"
-	}
+	*/
 ]
