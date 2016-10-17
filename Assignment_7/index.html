@@ -39,8 +39,19 @@
 			var marker = new google.maps.Marker({
     			position: markerPosition,
     			map: map,
-    			title: markerData[counter].title
+    			title: markerData[counter].title,
+    			animation: google.maps.Animation.DROP
   			});
+
+  			(function( marker, data ) {
+				google.maps.event.addListener( marker, "click", 
+					function() {
+						infowindow.setContent( markerData.description );
+						infowindow.open( map, marker );
+					}
+				);
+			}
+			)( marker, data );
 		}
 
 
