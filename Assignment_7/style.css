@@ -7,7 +7,7 @@ h1{
     position: absolute;
     z-index: 2;
     font-family: Arial;
-    color: #2d4424;
+    color: black;
 }
 #map-container{
     height: 100%;
