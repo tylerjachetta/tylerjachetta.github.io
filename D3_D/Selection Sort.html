@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Selection Sort</title>
+	<!-- load d3 library js file -->
+	<script src="d3/d3.js"></script>
+</head>
+<body>
+	<button onclick="sortGraph()" style="position: absolute; left: 114px">Sort Graph</button>
+	<button onclick="createGraph()" style="position: absolute;">Create Graph</button>
+	<p id="compareWrapper" style="position: absolute; top: 18px;"> </p>
+	<!-- custom script -->
+	<script>
+	
+
+			//Width and height
+			var w = 1000;
+			var h = 400;
+			var barPadding = 0.5;
+			var iterator = 0;
+			var comparisonCount = 0;
+			var dataset = [];
+
+			for (var i = 0; i < 700; i++)
+			{
+				dataset[i] = Math.floor((Math.random() * 100) + 1)
+			}
+			
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			function createGraph ()
+			{
+
+				d3.selectAll("rect").remove();
+				d3.selectAll("text").remove();
+
+				svg.selectAll("rect")
+			   .data(dataset)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+			   		return i * (w / dataset.length);
+			   })
+			   .attr("y", function(d) {
+			   		return h - (d * 4);
+			   })
+			   .attr("width", w / dataset.length - barPadding)
+			   .attr("height", function(d) {
+			   		return d * 4;
+			   })
+			   .attr("fill", function(d) {
+					return "rgb(0, 0, "  +(d * 10) + ")";
+			   });
+
+			   	/*
+				svg.selectAll("text")
+				   .data(dataset)
+				   .enter()
+				   .append("text")
+				   .text(function(d) {
+				   		return d;
+				   })
+				   .attr("text-anchor", "middle")
+				   .attr("x", function(d, i) {
+				   		return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
+				   })
+				   .attr("y", function(d) {
+				   		return h - (d * 4) - 1;
+				   })
+				   .attr("font-family", "courier")
+				   .attr("font-size", "9px")
+				   .attr("fill", "black");
+				*/
+
+			}
+
+			function sortGraph()
+			{	
+				if(iterator < dataset.length)
+				{
+					recursiveSelectionSort(iterator);
+					iterator++;
+					createGraph();
+					setTimeout(function(){sortGraph(i); }, 1);
+				}
+
+				d3.select("body")
+				  .selectAll("p")
+                  .text("Comparisions: " + comparisonCount);
+				
+			}
+			
+			function recursiveSelectionSort (i)
+			{
+				var len = dataset.length,
+			        min;
+
+				min = i;
+
+		        //check the rest of the array to see if anything is smaller
+		        for (j=i+1; j < len; j++)
+		        {
+		            if (dataset[j] < dataset[min])
+		            {
+		                min = j;
+		            }
+		            comparisonCount++;
+		        }
+
+		        //if the minimum isn't in the position, swap it
+		        if (i != min)
+		        {
+		            swap(dataset, i, min);
+		            //console.log(dataset);
+
+		        }
+
+
+			}
+			
+			function swap(items, firstIndex, secondIndex)
+			{
+			    var temp = items[firstIndex];
+			    items[firstIndex] = items[secondIndex];
+			    items[secondIndex] = temp;
+			}
+
+			
+		
+	</script>	
+</body>
+</html>
