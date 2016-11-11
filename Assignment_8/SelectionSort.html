@@ -86,26 +86,27 @@
 			var dataset = [];
 			var dataset2 = [];
 			
+			/*
 			function loadjson() 
 			{
 				$.getJSON( "integers.json",
 				function( returnedData ) 
 				{
-				// next line copies json data loaded in local var
-				// into a global variable that createMap() function can access
 					dataset = returnedData.Values;
 					dataset2 = returnedData.Values;
 					console.log("test");
 				}
 		 		);
 			}
-			/*
+			*/
+			
+
 			for (var i = 0; i < 100; i++)
 			{
 				dataset[i] = i + 1;
 				dataset2[i] = i + 1;
 			}
-			*/
+		
 			console.log(dataset);
 			shuffle(dataset);
 			shuffle(dataset2);
