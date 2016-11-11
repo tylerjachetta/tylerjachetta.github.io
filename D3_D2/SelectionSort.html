@@ -63,7 +63,7 @@
 		}
 	</style>
 </head>
-<body>
+<body onload="loadjson();">
 	<button onclick="recursiveSortGraph();bubbleSort();" class="button" style="position: absolute; left: 44%">Sort Graphs</button>
 	<button onclick="createGraphSelectionSort();createGraphBubbleSort(); removeElement();"  id="test" class="button" style="position: absolute;">Create Graphs</button>
      
@@ -85,7 +85,7 @@
 			var iterator = 0;
 			var dataset = [];
 			var dataset2 = [];
-			loadjson();
+			
 			function loadjson() 
 			{
 				$.getJSON( "integers.json",
@@ -95,7 +95,7 @@
 				// into a global variable that createMap() function can access
 					dataset = returnedData.Values;
 					dataset2 = returnedData.Values;
-					console.log(returnedData.Values);
+					console.log("test");
 				}
 		 		);
 			}
