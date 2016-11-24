@@ -1,22 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Dog Petting Simulator</title>
-        <style type="text/css">
-            html, body 
-            {
-            	margin: 0;
-            	cursor: -webkit-grab;
-        	}
+<head>
+	<title>Puppy Pats</title>
+	<script type="text/javascript" src="js/phaser.min.js"></script>
+	<style type="text/css">
+	    body, html 
+	    {
+	    	margin: 0;
+	    	/*background: black;*/
+		}
+
+		canvas {   display : block;   margin : auto;}
+
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+	var game = new Phaser.Game(1000, 1000, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+	function preload() 
+	{
+
+	    game.load.image('dog', 'assets/doggo.gif');
+	    game.load.image('healthBar', 'assets/health-empty.png');
+	    game.load.image('healthBarStatus', 'assets/health-ful.png');
+
+	    game.stage.backgroundColor = '#71c5cf';
+
+	}
+
+	var doggo;
+	var healthBar;
+	var healthBarStatus;
+
+	var score;
+	var counter = 100;
+
+	function create() 
+	{
+		doggo = game.add.sprite(225, 250, 'dog');
+		healthBar = game.add.sprite(125, game.world.centerX + 250, 'healthBar');
+		healthBarStatus = game.add.sprite(125, game.world.centerX + 250, 'healthBarStatus');
 
 
-        </style>
-        <script src="phaser/phaser.min.js"></script>
+		doggo.inputEnabled = true;
+	    text = game.add.text(250, 16, '', { fill: 'black' });
 
-        <script src="index.js"></script>
-    </head>
-    <body>
+	    doggo.events.onInputDown.add(listener, this);
+	    doggo.input.useHandCursor = true;
+	}
 
-    </body>
+	function update() 
+	{
+		if (counter >= 0 )
+		{
+			healthBarStatus.scale.setTo(counter / 100, 1);
+		}
+		else
+		{
+			doggo.kill();
+		}
+
+	}
+
+	function listener () 
+	{
+
+	    counter--;
+	}
+
+	</script>
+
+</body>
 </html>
