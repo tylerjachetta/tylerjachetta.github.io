@@ -96,7 +96,7 @@ game.state.add('play', {
         });
 
         var puppyData = game.cache.getJSON('puppydata');
-
+        console.log(puppyData);
         state.puppies = state.game.add.group();
 
         var puppy;
