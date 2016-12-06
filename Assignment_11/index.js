@@ -88,43 +88,56 @@ game.state.add('play', {
             upgradeButtons.addChild(button);
         });
 
-
-        $.getJSON( 'puppydata.json', function( puppyData ) {
-           
+        var puppyData = [
+            {name: 'Corgi',             image: 'corgi',             maxHealth: 50},
+            {name: 'Husky Puppies',     image: 'huskies',           maxHealth: 65},
+            {name: 'Pug',               image: 'pug',               maxHealth: 90},
+            {name: 'Shibe',             image: 'shibe',             maxHealth: 30},
+            {name: 'Shibe',             image: 'shibe-2',           maxHealth: 25}
         
-            console.log(puppyData);
-            state.puppies = state.game.add.group();
+        ];
+        /*
+        $.getJSON( 'game.json', function( gameJSON ) {
+            gameBackcolor = gameJSON.backcolor;
+            gameWords = gameJSON.words;
+            
+            // create a game that fits the screen
+            gameWidth = $(window).width();
+            gameHeight = $(window).height();
+            game = new Phaser.Game( gameWidth, gameHeight, Phaser.CANVAS );
+            
+            // start the 'main' state for the game
+            game.state.add( 'main', mainState, true );
+        });
+        */
+        state.puppies = state.game.add.group();
 
-            var puppy;
-            puppyData.forEach(function(data) {
-                puppy = state.puppies.create(1500, state.game.world.centerY, data.image);
-                puppy.health = puppy.maxHealth = data.maxHealth;
-                puppy.anchor.setTo(0.5, 1);
-                puppy.details = data;
-                puppy.inputEnabled = true;
-                
-                //Events
-                puppy.events.onInputDown.add(state.onClickPuppy, state);
-                puppy.events.onKilled.add(state.onPetPupper, state);
-                puppy.events.onRevived.add(state.onResetPosition, state);
-            });
-            state.currentPuppy = state.puppies.getRandom();
-            state.currentPuppy.position.set(state.game.world.centerX, state.game.world.centerY + 125);
-            state.puppyUI = state.game.add.group();
-            state.puppyUI.position.setTo(state.currentPuppy.x - 220, state.currentPuppy.y + 125);
-            state.puppyName = state.puppyUI.addChild(state.game.add.text(0, 0, state.currentPuppy.details.name, {
+        var puppy;
+        puppyData.forEach(function(data) {
+            puppy = state.puppies.create(1500, state.game.world.centerY, data.image);
+            puppy.health = puppy.maxHealth = data.maxHealth;
+            puppy.anchor.setTo(0.5, 1);
+            puppy.details = data;
+            puppy.inputEnabled = true;
+            
+            //Events
+            puppy.events.onInputDown.add(state.onClickPuppy, state);
+            puppy.events.onKilled.add(state.onPetPupper, state);
+            puppy.events.onRevived.add(state.onResetPosition, state);
+        });
+
+        state.currentPuppy = state.puppies.getRandom();
+        state.currentPuppy.position.set(state.game.world.centerX, state.game.world.centerY + 125);
+
+        state.puppyUI = state.game.add.group();
+        state.puppyUI.position.setTo(state.currentPuppy.x - 220, state.currentPuppy.y + 125);
+        state.puppyName = state.puppyUI.addChild(state.game.add.text(0, 0, state.currentPuppy.details.name, {
             font: '48px Arial Black',
             fill: '#fff',
             strokeThickness: 4
-            }));
-
-            state.puppyHealthBar = state.puppyUI.addChild(state.game.add.image(0, 80, "health-empty"));
-            state.puppyHealthStatus = state.puppyUI.addChild(state.game.add.image(0, 80, "health-full"));
-        });
-        
-
-        
-		
+        }));
+		state.puppyHealthBar = state.puppyUI.addChild(state.game.add.image(0, 80, "health-empty"));
+		state.puppyHealthStatus = state.puppyUI.addChild(state.game.add.image(0, 80, "health-full"));
 		
 		
         state.dialougeTextPool = this.add.group();
