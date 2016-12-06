@@ -88,14 +88,12 @@ game.state.add('play', {
             upgradeButtons.addChild(button);
         });
 
-        var puppyData = [
-            {name: 'Corgi',        		image: 'corgi',        		maxHealth: 50},
-            {name: 'Husky Puppies',     image: 'huskies',      		maxHealth: 65},
-            {name: 'Pug',    			image: 'pug',    			maxHealth: 90},
-            {name: 'Shibe',             image: 'shibe',             maxHealth: 30},
-            {name: 'Shibe',        		image: 'shibe-2',        	maxHealth: 25}
-        
-        ];
+        var puppyData = [];
+
+        $.getJSON( 'puppydata.json', function( JSON ) {
+            puppyData = JSON;
+        });
+        console.log(puppyData);
         state.puppies = state.game.add.group();
 
         var puppy;

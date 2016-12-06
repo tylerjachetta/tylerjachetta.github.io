@@ -1,0 +1,7 @@
+[
+	{"name": "Corgi",        		"image": "corgi",        		"maxHealth": 50},
+	{"name": "Husky Puppies",     "image": "huskies",      		"maxHealth": 65},
+	{"name": "Pug",    			"image": "pug",    			"maxHealth": 90},
+	{"name": "Shibe",             "image": "shibe",             "maxHealth": 30},
+	{"name": "Shibe",        		"image": "shibe-2",        	"maxHealth": 25}
+];
