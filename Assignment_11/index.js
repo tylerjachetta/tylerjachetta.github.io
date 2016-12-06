@@ -89,7 +89,8 @@ game.state.add('play', {
         });
 
         var puppyData = $.getJSON( 'puppydata.json', function( JSON ) {
-            puppyData = JSON;
+            puppyData = JSON
+            return puppyData;
         });
         console.log(puppyData);
         state.puppies = state.game.add.group();
