@@ -4,36 +4,19 @@ var game = new Phaser.Game(500, 800, Phaser.AUTO, '');
 
 game.state.add('play', {
     preload: function() {
-        /*
-        $.getJSON( 'game.json', function( gameJSON ) {
-            gameBackcolor = gameJSON.backcolor;
-            gameWords = gameJSON.words;
-            
-            // create a game that fits the screen
-            gameWidth = $(window).width();
-            gameHeight = $(window).height();
-            game = new Phaser.Game( gameWidth, gameHeight, Phaser.CANVAS );
-            
-            // start the 'main' state for the game
-            game.state.add( 'main', mainState, true );
-        });
-        */
-        $.getJSON( 'puppydata.json', function( gameJSON ) {
-            for (var i = 0; i < gameJSON.length; i++) 
-            {
-                this.game.load.image(gameJSON[0].name, gameJSON[0].path);
-                console.log(test);
-            }
-        });
+        
+        
 
-        /*
+        game.load.json('puppydata', 'http://phaser.io/puppydata.json');
+
+        
         //Dog Sprites
         this.game.load.image('corgi', 'puppy_sprites/corgi.png');
         this.game.load.image('huskies', 'puppy_sprites/huskies.png');
         this.game.load.image('pug', 'puppy_sprites/pug.png');
         this.game.load.image('shibe', 'puppy_sprites/shibe.png');
         this.game.load.image('shibe-2', 'puppy_sprites/shibe-2.png');
-        */
+        
 
         //Currency Sprite
         this.game.load.image('treat', 'puppy_sprites/treat.png');
@@ -112,15 +95,8 @@ game.state.add('play', {
             upgradeButtons.addChild(button);
         });
 
-        var puppyData = [
-            {name: 'Corgi',             image: 'corgi',             maxHealth: 50},
-            {name: 'Husky Puppies',     image: 'huskies',           maxHealth: 65},
-            {name: 'Pug',               image: 'pug',               maxHealth: 90},
-            {name: 'Shibe',             image: 'shibe',             maxHealth: 30},
-            {name: 'Shibe',             image: 'shibe-2',           maxHealth: 25}
-        
-        ];
-        
+        var puppyData = game.cache.getJSON('puppydata');
+
         state.puppies = state.game.add.group();
 
         var puppy;
