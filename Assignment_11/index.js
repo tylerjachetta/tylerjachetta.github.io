@@ -22,6 +22,7 @@ game.state.add('play', {
             for (var i = 0; i < gameJSON.length; i++) 
             {
                 this.game.load.image(gameJSON[0].name, gameJSON[0].path);
+                console.log(test);
             }
         });
 
