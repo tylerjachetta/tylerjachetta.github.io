@@ -88,10 +88,8 @@ game.state.add('play', {
             upgradeButtons.addChild(button);
         });
 
-        var puppyData = [];
-
-        $.getJSON( 'puppydata.json', function( JSON ) {
-            puppyData = JSON;
+        var puppyData = $.getJSON( 'puppydata.json', function( JSON ) {
+            return puppyData = JSON;
         });
         console.log(puppyData);
         state.puppies = state.game.add.group();
