@@ -4,12 +4,35 @@ var game = new Phaser.Game(500, 800, Phaser.AUTO, '');
 
 game.state.add('play', {
     preload: function() {
+        /*
+        $.getJSON( 'game.json', function( gameJSON ) {
+            gameBackcolor = gameJSON.backcolor;
+            gameWords = gameJSON.words;
+            
+            // create a game that fits the screen
+            gameWidth = $(window).width();
+            gameHeight = $(window).height();
+            game = new Phaser.Game( gameWidth, gameHeight, Phaser.CANVAS );
+            
+            // start the 'main' state for the game
+            game.state.add( 'main', mainState, true );
+        });
+        */
+        $.getJSON( 'puppydata.json', function( gameJSON ) {
+            for (x in gameJSON) 
+            {
+                this.game.load.image(gameJSON.name, gameJSON.path);
+            }
+        });
+
+        /*
         //Dog Sprites
         this.game.load.image('corgi', 'puppy_sprites/corgi.png');
         this.game.load.image('huskies', 'puppy_sprites/huskies.png');
         this.game.load.image('pug', 'puppy_sprites/pug.png');
         this.game.load.image('shibe', 'puppy_sprites/shibe.png');
         this.game.load.image('shibe-2', 'puppy_sprites/shibe-2.png');
+        */
         
         //Currency Sprite
         this.game.load.image('treat', 'puppy_sprites/treat.png');
@@ -96,20 +119,7 @@ game.state.add('play', {
             {name: 'Shibe',             image: 'shibe-2',           maxHealth: 25}
         
         ];
-        /*
-        $.getJSON( 'game.json', function( gameJSON ) {
-            gameBackcolor = gameJSON.backcolor;
-            gameWords = gameJSON.words;
-            
-            // create a game that fits the screen
-            gameWidth = $(window).width();
-            gameHeight = $(window).height();
-            game = new Phaser.Game( gameWidth, gameHeight, Phaser.CANVAS );
-            
-            // start the 'main' state for the game
-            game.state.add( 'main', mainState, true );
-        });
-        */
+        
         state.puppies = state.game.add.group();
 
         var puppy;
