@@ -108,9 +108,10 @@ game.state.add('play', {
                 puppy.events.onKilled.add(state.onPetPupper, state);
                 puppy.events.onRevived.add(state.onResetPosition, state);
             });
+            state.currentPuppy = state.puppies.getRandom();
+            state.currentPuppy.position.set(state.game.world.centerX, state.game.world.centerY + 125);
         });
-        state.currentPuppy = state.puppies.getRandom();
-        state.currentPuppy.position.set(state.game.world.centerX, state.game.world.centerY + 125);
+        
 
         state.puppyUI = state.game.add.group();
         state.puppyUI.position.setTo(state.currentPuppy.x - 220, state.currentPuppy.y + 125);
