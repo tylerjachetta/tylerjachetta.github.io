@@ -110,16 +110,17 @@ game.state.add('play', {
             });
             state.currentPuppy = state.puppies.getRandom();
             state.currentPuppy.position.set(state.game.world.centerX, state.game.world.centerY + 125);
-        });
-        
-
-        state.puppyUI = state.game.add.group();
-        state.puppyUI.position.setTo(state.currentPuppy.x - 220, state.currentPuppy.y + 125);
-        state.puppyName = state.puppyUI.addChild(state.game.add.text(0, 0, state.currentPuppy.details.name, {
+            state.puppyUI = state.game.add.group();
+            state.puppyUI.position.setTo(state.currentPuppy.x - 220, state.currentPuppy.y + 125);
+            state.puppyName = state.puppyUI.addChild(state.game.add.text(0, 0, state.currentPuppy.details.name, {
             font: '48px Arial Black',
             fill: '#fff',
             strokeThickness: 4
         }));
+        });
+        
+
+        
 		state.puppyHealthBar = state.puppyUI.addChild(state.game.add.image(0, 80, "health-empty"));
 		state.puppyHealthStatus = state.puppyUI.addChild(state.game.add.image(0, 80, "health-full"));
 		
