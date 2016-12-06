@@ -88,27 +88,27 @@ game.state.add('play', {
             upgradeButtons.addChild(button);
         });
 
-        var puppyData = $.getJSON( 'puppydata.json', function( data ) {
-            puppyData = data;
-            return puppyData;
-        });
-        console.log(puppyData);
-        state.puppies = state.game.add.group();
 
-        var puppy;
-        puppyData.forEach(function(data) {
-            puppy = state.puppies.create(1500, state.game.world.centerY, data.image);
-            puppy.health = puppy.maxHealth = data.maxHealth;
-            puppy.anchor.setTo(0.5, 1);
-            puppy.details = data;
-            puppy.inputEnabled = true;
-            
-            //Events
-            puppy.events.onInputDown.add(state.onClickPuppy, state);
-            puppy.events.onKilled.add(state.onPetPupper, state);
-            puppy.events.onRevived.add(state.onResetPosition, state);
-        });
+        $.getJSON( 'puppydata.json', function( puppyData ) {
+           
+        
+            console.log(puppyData);
+            state.puppies = state.game.add.group();
 
+            var puppy;
+            puppyData.forEach(function(data) {
+                puppy = state.puppies.create(1500, state.game.world.centerY, data.image);
+                puppy.health = puppy.maxHealth = data.maxHealth;
+                puppy.anchor.setTo(0.5, 1);
+                puppy.details = data;
+                puppy.inputEnabled = true;
+                
+                //Events
+                puppy.events.onInputDown.add(state.onClickPuppy, state);
+                puppy.events.onKilled.add(state.onPetPupper, state);
+                puppy.events.onRevived.add(state.onResetPosition, state);
+            });
+        });
         state.currentPuppy = state.puppies.getRandom();
         state.currentPuppy.position.set(state.game.world.centerX, state.game.world.centerY + 125);
 
