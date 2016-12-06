@@ -19,9 +19,9 @@ game.state.add('play', {
         });
         */
         $.getJSON( 'puppydata.json', function( gameJSON ) {
-            for (x in gameJSON) 
+            for (var i = 0; i < gameJSON.length; i++) 
             {
-                this.game.load.image(gameJSON.name, gameJSON.path);
+                this.game.load.image(gameJSON[0].name, gameJSON[0].path);
             }
         });
 
@@ -33,7 +33,7 @@ game.state.add('play', {
         this.game.load.image('shibe', 'puppy_sprites/shibe.png');
         this.game.load.image('shibe-2', 'puppy_sprites/shibe-2.png');
         */
-        
+
         //Currency Sprite
         this.game.load.image('treat', 'puppy_sprites/treat.png');
 
