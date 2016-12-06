@@ -7,7 +7,7 @@ game.state.add('play', {
         
         
 
-        game.load.json('puppydata', 'http://phaser.io/puppydata.json');
+        game.load.json('puppydata', 'https://tylerjachetta.github.io/Assignment_11/puppydata.json');
 
         
         //Dog Sprites
