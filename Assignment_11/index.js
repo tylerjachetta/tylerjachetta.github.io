@@ -116,13 +116,15 @@ game.state.add('play', {
             font: '48px Arial Black',
             fill: '#fff',
             strokeThickness: 4
-        }));
+            }));
+
+            state.puppyHealthBar = state.puppyUI.addChild(state.game.add.image(0, 80, "health-empty"));
+            state.puppyHealthStatus = state.puppyUI.addChild(state.game.add.image(0, 80, "health-full"));
         });
         
 
         
-		state.puppyHealthBar = state.puppyUI.addChild(state.game.add.image(0, 80, "health-empty"));
-		state.puppyHealthStatus = state.puppyUI.addChild(state.game.add.image(0, 80, "health-full"));
+		
 		
 		
         state.dialougeTextPool = this.add.group();
