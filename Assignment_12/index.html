@@ -62,7 +62,7 @@
           method : "GET",
           url : "portfolioItems.json"
         }).then(function mySucces(response) {
-            $scope.portfolioItems = response;
+            $scope.portfolioItems = response.data;
             console.log($scope.portfolioItems);
         });
       });
