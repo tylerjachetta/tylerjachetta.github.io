@@ -6,7 +6,7 @@ game.state.add('play', {
     preload: function() {
         
         
-
+        //load enemies from puppydata.json
         game.load.json('puppydata', 'https://tylerjachetta.github.io/Assignment_11/puppydata.json');
 
         
