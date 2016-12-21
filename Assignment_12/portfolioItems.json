@@ -42,9 +42,9 @@
     "filter": "maps + ajax"
   },
   { "title": "Assignment 8: Data Visualization with JavaScript and the D3 Library", 
-    "image": "dog.jpg", 
+    "image": "sorting.jpg", 
     "description": "Sorting Algorithms Visualized",
-    "link": "https://tylerjachetta.github.io/Assignment_8/SelectionSort.html",
+    "link": "https://tylerjachetta.github.io",
     "filter": "d3"
   },
   { "title": "Assignment 9: Simple Game with JavaScript and the Phaser.js Library", 
