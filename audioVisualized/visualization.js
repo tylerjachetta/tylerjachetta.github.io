@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  audioCtx.crossOrigin = "anonymous";
   var audioElement = document.getElementById('audioElement');
   var audioSrc = audioCtx.createMediaElementSource(audioElement);
   var analyser = audioCtx.createAnalyser();
@@ -13,9 +12,9 @@ $(document).ready(function () {
   //var frequencyData = new Uint8Array(analyser.frequencyBinCount);
   var frequencyData = new Uint8Array(200);
 
-  var svgHeight = '20';
-  var svgWidth = '100';
-  var barPadding = '1';
+  var svgHeight = '300';
+  var svgWidth = '1200';
+  var barPadding = '0';
 
   function createSvg(parent, height, width) {
     return d3.select(parent).append('svg').attr('height', height).attr('width', width);
