@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  audioCtx.crossOrigin = "anonymous";
   var audioElement = document.getElementById('audioElement');
   var audioSrc = audioCtx.createMediaElementSource(audioElement);
   var analyser = audioCtx.createAnalyser();
@@ -49,7 +50,7 @@ $(document).ready(function () {
            return d;
         })
         .attr('fill', function(d) {
-           return 'rgb(0, 0, ' + d + ')';
+           return 'rgb(255, 255, 255)';
         });
   }
 
