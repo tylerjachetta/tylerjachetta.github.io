@@ -50,7 +50,7 @@ $(document).ready(function () {
            return d;
         })
         .attr('fill', function(d) {
-           return 'rgb(255, 255, 255)';
+           return 'rgb(255, 255, ' +  d + ')';
         });
   }
 
