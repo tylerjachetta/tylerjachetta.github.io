@@ -300,6 +300,7 @@
 			}, 300);
 
 			pageNumber++;	
+
 			$('.image-popup-vertical-fit').magnificPopup({
 				type: 'image',
 				closeOnContentClick: true,
