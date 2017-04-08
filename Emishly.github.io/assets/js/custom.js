@@ -346,6 +346,15 @@
 							}).css('display', 'none');
 						}, 1500);
 					}
+					$('.image-popup-vertical-fit').magnificPopup({
+						type: 'image',
+						closeOnContentClick: true,
+						mainClass: 'mfp-img-mobile',
+						image: {
+							verticalFit: true
+						}
+			
+					});
 				},
 
 				error: function (jqXHR, textStatus, errorThrown) {
@@ -358,16 +367,6 @@
 
 				}
 			});
-
-			$('.image-popup-vertical-fit').magnificPopup({
-			type: 'image',
-			closeOnContentClick: true,
-			mainClass: 'mfp-img-mobile',
-			image: {
-				verticalFit: true
-			}
-			
-		});
 		}
 
 	});
