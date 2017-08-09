@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sorting Visualized</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Sorting
+         Visualized</a>
+        <div class="collapse navbar-collapse" id="navbarExample">
+            <ul class="sidebar-nav navbar-nav">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary btn-block beginSorting">Begin Sorting</button>
+                </li>
+                <li class="nav-item">
+                    
+                </li>
+         </div>
+    </nav>
+
+    <div class="content-wrapper py-3">
+              <div class="row">
+
+                <div class="col-lg-4">
+                    <!-- Example Notifications Card -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fa fa-signal" aria-hidden="true"></i> Bubble Sort
+                        </div>
+                        <div class="list-group list-group-flush small graph graphContainer0">
+                        </div>
+                        <div class="card-footer small text-muted">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" id="tail">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fa fa-signal" aria-hidden="true"></i> Cocktail Sort
+                        </div>
+                        <div class="list-group list-group-flush small graph graphContainer1">
+                        </div>
+                        <div class="card-footer small text-muted">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" id="tail">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fa fa-signal" aria-hidden="true"></i> Selection Sort
+                        </div>
+                        <div class="list-group list-group-flush small graph graphContainer2">
+                        </div>
+                        <div class="card-footer small text-muted">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" id="tail">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fa fa-signal" aria-hidden="true"></i> Gnome Sort
+                        </div>
+                        <div class="list-group list-group-flush small graph graphContainer3">
+                        </div>
+                        <div class="card-footer small text-muted">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" id="tail">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fa fa-signal" aria-hidden="true"></i> Insertion Sort
+                        </div>
+                        <div class="list-group list-group-flush small graph graphContainer4">
+                        </div>
+                        <div class="card-footer small text-muted">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" id="tail">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fa fa-signal" aria-hidden="true"></i> Shell Sort
+                        </div>
+                        <div class="list-group list-group-flush small graph graphContainer5">
+                        </div>
+                        <div class="card-footer small text-muted">
+                        </div>
+                    </div>
+                </div>
+
+                
+            
+            </div>
+
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/tether/tether.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script type="text/javascript" src="vendor/d3.js"></script>
+    <script type="text/javascript" src="js/visualization.js"></script>
+
+    <script type="text/javascript">
+
+        var iterator = 0,
+            prevElement,
+            objArry = [];
+
+        function manageClicks() {
+            $(".col-lg-4").click(function(){
+                $(this).find('.card-header').css('background', '#c7c7c7');
+                if(this != prevElement) {
+                    $(prevElement).find('.card-header').css('background', '#f7f7f9');
+                }
+                prevElement = this;
+            });
+        }
+
+        $(function() {
+            manageClicks();
+
+            var graph0 = new graphObject('.graphContainer0', 'random', 'bubbleSort');
+            var graph1 = new graphObject('.graphContainer1', 'random', 'cocktailSort');
+            var graph2 = new graphObject('.graphContainer2', 'random', 'selectionSort');
+            var graph3 = new graphObject('.graphContainer3', 'random', 'gnomeSort');
+            var graph4 = new graphObject('.graphContainer4', 'random', 'insertionSort');
+            var graph5 = new graphObject('.graphContainer5', 'random', 'shellSort');
+
+            var objArry = [ graph0,graph1,graph2,graph3,graph4,graph5]
+
+            for(var i = 0; i < objArry.length; i++) {
+                objArry[i].createInitalGraph()
+            }
+        
+
+
+            $(".beginSorting").click(function(){
+                if (iterator < 1) {
+                    for(var i = 0; i < $('.graph').length; i++) {
+                        objArry[i].animate();
+                    }
+                    $(".beginSorting").text("Refresh");
+                    iterator++;
+                } else {
+                    location.reload();
+                }
+            });
+
+        });
+
+        
+                    
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sorting Visualized</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+  integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+  crossorigin="anonymous"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="algorithms.js"></script>
+  <script type="text/javascript" src="visualization.js"></script>
+  <style>
+   * {
+       -webkit-touch-callout: none;
+       -webkit-user-select: none;
+       -khtml-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none;
+       user-select: none;
+   }
+    html {
+      background: url(background.png) center 125px no-repeat #000916;
+      background-color:;
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      background-color: rgba(255, 255, 255, 0);
+    }
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+      height: 100%;
+    }
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background: rgba(28, 41, 113, 0) linear-gradient(to right,rgba(2, 1, 1, 0.2) 0%,rgba(0,0,0,0.5) 100%) repeat scroll 0 0;
+      height: 100%;
+      position: fixed;
+      border-right: 1px solid #636262;
+    }
+    
+    .main-content {
+      margin-left: 25%;
+      //background: #212121;
+    }    
+
+    .well {
+      height: 465px;
+      background: rgba(28, 41, 113, 0) linear-gradient(to right,rgba(2, 1, 1, 0.2) 0%,rgba(0,0,0,0.5) 100%) repeat scroll 0 0;
+      border: 1px solid #636262;
+      border-radius: 0px;
+      padding: 10px;
+    }
+    
+    .navbar {
+      margin-bottom: 0px;
+    }
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 768px) {
+      .row.content {height: auto;} 
+      .main-content {margin-left: 0%;}   
+      .well {height: 153px;} 
+    }
+
+    @media screen and (max-height: 775px) {
+      .well {height: 355px}
+    }
+
+
+    @media screen and (max-height: 774px) {
+      .well {height: 332px}
+    }
+
+    @media screen and (max-height: 644px) {
+      .well {height: 296px}
+    }
+
+    @media screen and (max-width: 450px) {
+      .well {height: 145px}
+    }
+    .title {
+      color: white;
+      font-family: "Segoe UI", Segoe, Roboto, "Helvetica Neue", Helvetica, "Calibri Light", Calibri, sans-serif;
+    }
+    .algorithmTitle h4{
+      color: white;
+      margin: 0px;
+      font-family: "Segoe UI", Segoe, Roboto, "Helvetica Neue", Helvetica, "Calibri Light", Calibri, sans-serif;
+      padding: 10px 0px 10px 0px;
+    }
+
+    .algorithmTitle{
+      padding: 0px;
+    }
+    
+    .glyphicon:hover {
+      color: #718e06;
+      cursor: pointer;
+    }
+
+    svg {
+      border: 1px solid #636262;
+    }
+
+    .glyphicon {
+      color: white;
+      position: absolute;
+      top: 27%;
+      right: 1%;
+      font-size: 19px;
+      padding: 14px 0px 0px 0px;
+    }
+    
+    .col-sm-6 {
+      padding
+    }
+
+    .panelSetting{
+      display: none;
+      padding-top: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(84,133,183,0.2);
+    }
+    .globalPanelSetting {
+      padding-top: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(84,133,183,0.2);
+    }
+
+    label {
+      font-size: 19px;
+    }
+
+    .form-control {
+      color: #fff;
+      background: rgba(28, 41, 113, 0) linear-gradient(to right,rgba(2, 1, 1, 0.2) 0%,rgba(0,0,0,0.5) 100%) repeat scroll 0 0;
+      background-color: rgba(28, 41, 113, 0);
+      border: 1px solid #636262;
+    }
+
+    button {
+      border: 1px solid #515050;
+      background: #303030;
+      border-radius: 4px;
+      background: rgba(28, 41, 113, 0) linear-gradient(to right,rgba(2, 1, 1, 0.2) 0%,rgba(0,0,0,0.5) 100%) repeat scroll 0 0;
+    }
+
+    .field1 , .field2 {
+      border: 1px solid #515050;
+      background: rgba(28, 41, 113, 0) linear-gradient(to right,rgba(2, 1, 1, 0.2) 0%,rgba(0,0,0,0.5) 100%) repeat scroll 0 0;
+      width: 11%;
+      text-align: center;
+    }
+
+    .controls {
+      color: white;
+      position: relative;
+      top: 0%;
+      right: 0;
+      font-size: 19px;
+      padding: 14px 0px 0px 0px;
+    }
+
+    .left {
+      padding-right: 7.5px;
+    }
+
+    .right {
+      padding-left: 7.5px;
+    }
+    option {
+    	background-color: rgb(16, 34, 47);
+    }
+    .btn {
+      background: linear-gradient(to bottom,#789707 5%,#516604 95%);
+      color: #d9d9d9;
+      font-size: 19px;
+    }
+
+    .stop {
+	  background: linear-gradient(to bottom,#b41007 5%,#641b0b 95%);
+ 	  display: none;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid" style="color:#212121">
+    <div class="navbar-header title">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="glyphicon glyphicon-cog"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Sorting Visualized</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Options</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid" >
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs title">
+      <h1>Sorting Visualized</h1>
+      <div class="col-sm-12 globalPanelSetting">
+	      <form>
+	          <div class="form-group">
+	            <label>Array Size:</label>
+	              <button type="button" class="sub1">-</button>
+	              <input type="text" value="50" class="field1" disabled/>
+	              <button type="button" class="add1">+</button>
+	            <br>
+	            <label>Delay:</label>
+	              <button type="button" class="sub2">-</button>
+	              <input type="text"" value="10" class="field2" disabled/>
+	              <button type="button" class="add2">+</button>
+	            <br>
+	            <label>Array Composition:</label>
+	            <div class="radio">
+	              <label><input type="radio" name="arrayComp" value="random" checked>Random</label>
+	            </div>
+	            <div class="radio">
+	              <label><input type="radio" name="arrayComp" value="fewUnique">Few Unique</label>
+	            </div>
+	            <div class="radio">
+	              <label><input type="radio" name="arrayComp" value="reversed">Reversed</label>
+	            </div>
+	            <div class="radio">
+	              <label><input type="radio" name="arrayComp" value="nearlySorted">Nearly Sorted</label>
+	            </div>
+	          </div>
+	        </form>
+      </div>
+      <div class="col-sm-12 panelSetting" data-panel="0">
+        <form>
+            <div class="form-group">
+              <label>Panel One</label>
+              <br>
+              <label for="sel1">Sorting Algorithm:</label>
+              <select class="form-control" id="selectPanel1">
+                <option value="bubbleSort" selected>Bubble Sort</option>
+                <option value="selectionSort">Selection Sort</option>
+                <option value="cocktailSort">Cocktail Sort</option>
+                <option value="gnomeSort">Gnome Sort</option>
+                <option value="insertionSort">Insertion Sort</option>
+                <option value="shellSort">Shell Sort</option>
+              </select>
+            </div>
+          </form>
+      </div>
+      <div class="col-sm-12 panelSetting" data-panel="1">
+        <form>
+           <div class="form-group">
+            <label>Panel Two</label>
+            <br>
+            <label for="sel1">Sorting Algorithm:</label>
+            <select class="form-control" id="selectPanel2">
+              <option value="bubbleSort">Bubble Sort</option>
+              <option value="selectionSort" selected>Selection Sort</option>
+              <option value="cocktailSort"> Cocktail Sort</option>
+              <option value="gnomeSort">Gnome Sort</option>
+              <option value="insertionSort">Insertion Sort</option>
+              <option value="shellSort">Shell Sort</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-12 panelSetting" data-panel="2">
+        <form>
+          <div class="form-group">
+            <label>Panel Three</label>
+            <br>
+            <label for="sel1">Sorting Algorithm:</label>
+            <select class="form-control" id="selectPanel3">
+              <option value="bubbleSort">Bubble Sort</option>
+              <option value="selectionSort">Selection Sort</option>
+              <option value="cocktailSort" selected>Cocktail Sort</option>
+              <option value="gnomeSort">Gnome Sort</option>
+              <option value="insertionSort">Insertion Sort</option>
+              <option value="shellSort">Shell Sort</option>
+
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-12 panelSetting" data-panel="3">
+        <form>
+            <div class="form-group">
+              <label>Panel Four</label>
+              <br>
+              <label for="sel1">Sorting Algorithm:</label>
+              <select class="form-control" id="selectPanel4">
+                <option value="bubbleSort">Bubble Sort</option>
+                <option value="selectionSort">Selection Sort</option>
+                <option value="cocktailSort"> Cocktail Sort</option>
+                <option value="gnomeSort" selected>Gnome Sort</option>
+                <option value="insertionSort">Insertion Sort</option>
+                <option value="shellSort">Shell Sort</option>
+
+              </select>              
+            </div>
+          </form>
+      </div>
+
+
+
+      
+      <button type="button" class="btn btn-default col-sm-12 start">Sort</button>
+      <button type="button" class="btn btn-default col-sm-12 stop">Stop</button>
+
+
+    </div>
+
+    <br>
+    
+    <div class="col-sm-9 main-content">
+      
+      <div class="row">
+
+        <div class="col-sm-6 left">
+          <div class="well" data-graphContainer="0">
+            <svg width="100%" height="90%">
+            </svg>
+            <div class="col-sm-6 algorithmTitle">
+              <h4><span id="algTitle1"></span></h4>                       
+            </div>
+            <div class="col-sm-6">
+              <span class="glyphicon glyphicon-align-justify" onclick="hidePanelSetting(0);"></span>                      
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 right">
+          <div class="well" data-graphContainer="1">
+            <svg width="100%" height="90%">
+            </svg>
+            <div class="col-sm-6 algorithmTitle">
+              <h4><span id="algTitle2"></span></h4>                       
+            </div>
+            <div class="col-sm-6">
+              <span class="glyphicon glyphicon-align-justify" onclick="hidePanelSetting(1);"></span>                 
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6 left">
+          <div class="well" data-graphContainer="2">
+            <svg width="100%" height="90%">
+            </svg>
+            <div class="col-sm-6 algorithmTitle">
+              <h4><span id="algTitle3"></span></h4>                       
+            </div>
+            <div class="col-sm-6">
+              <span class="glyphicon glyphicon-align-justify" onclick="hidePanelSetting(2);"></span>                      
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 right">
+          <div class="well" data-graphContainer="3">
+            <svg width="100%" height="90%">
+            </svg>
+            <div class="col-sm-6 algorithmTitle">
+              <h4><span id="algTitle4"></span></h4>                       
+            </div>
+            <div class="col-sm-6">
+              <span class="glyphicon glyphicon-align-justify" onclick="hidePanelSetting(3);"></span>                      
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function hidePanelSetting (displayPanel){
+      $('*[data-panel]').hide();
+      $('*[data-graphContainer]').css("border", "1px solid #636262");
+      $('*[data-graphContainer]').find("span").css("color", "#ffffff");
+
+
+      $('*[data-panel="'+displayPanel+'"]').show();
+      $('*[data-graphContainer="'+displayPanel+'"]').css("border", "1px solid rgb(81, 102, 4)");
+      $('*[data-graphContainer="'+displayPanel+'"]').find("span").css("color", "#718e06");
+  }
+  
+  function displayVals (){
+    for(var i = 1; i <= 4; i++){
+      $("#algTitle" + i).html($("#selectPanel" + i + " option:selected").text());
+      $('*[data-graphContainer="0"]').find("svg").attr("class", $("#selectPanel1 option:selected").val());
+      $('*[data-graphContainer="1"]').find("svg").attr("class", $("#selectPanel2 option:selected").val());
+      $('*[data-graphContainer="2"]').find("svg").attr("class", $("#selectPanel3 option:selected").val());
+      $('*[data-graphContainer="3"]').find("svg").attr("class", $("#selectPanel4 option:selected").val());
+    }  
+  }
+
+  for(var i = 1; i <= 4; i++){
+    $( "#selectPanel" + i ).change(displayVals);
+  }
+
+  displayVals();
+  hidePanelSetting(0);
+  $('.add1').click(function () {
+      if ($(this).prev().val() < 250) $(this).prev().val(+$(this).prev().val() + 5);
+  });
+  $('.sub1').click(function () {
+      if ($(this).next().val() > 10) $(this).next().val(+$(this).next().val() - 5);
+  });
+
+  $('.add2').click(function () {
+      if ($(this).prev().val() < 150) $(this).prev().val(+$(this).prev().val() + 5);
+
+  });
+  $('.sub2').click(function () {
+      if ($(this).next().val() > 10) $(this).next().val(+$(this).next().val() - 5);
+
+  });
+  
+  setInterval (type, 500);
+
+  $('.start').click(function () {
+    $(this).prop("disabled",true);
+    $(this).html("Sorting<span id='dots'></span>");      
+    beginSort(true);
+    $('.stop').css("display","inline-block");
+  });
+
+  $('.stop').click(function () {
+    stopSorting();
+    $(".start").prop("disabled",false);   
+    $(".start").html("Begin Sorting");
+    beginSort(false);
+   	$(this).css("display","none");
+  });
+
+  $('.add1').click(function () { 
+    beginSort(false);
+  });
+
+  $('.sub1').click(function () { 
+    beginSort(false);
+  });
+
+  $('.radio').click(function () { 
+    beginSort(false);
+  });
+
+
+  function type()
+  {
+      if(dots < 3)
+      {
+          $('#dots').append('.');
+          dots++;
+      }
+      else
+      {
+          $('#dots').html('');
+          dots = 0;
+      }
+  }
+  $(function() {
+      beginSort(false);
+  });
+</script>
+<span id='dots' style="display: none;"></span>
+</body>
+</html>
