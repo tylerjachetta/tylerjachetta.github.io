@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>Demo</title>
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+  <link href="js/lity/dist/lity.css" rel="stylesheet">
+  <script
+    src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/lity/src/lity.js"></script>
+</head>
+
+<body>
+  
+  <div id="w">
+    <div id="content">
+      <h1>Hover Animate Test</h1>
+        
+        <ul id="giflist" class="clearfix">
+            <li>
+              <a href="https://www.youtube.com/watch?v=_ODmetTqz88" data-lity>
+                <img src="images/static.jpg" data-orig="images/static.jpg" width="480" height="270">
+              </a>
+            </li>
+        </ul>
+        <h2> Derek's Video </h2>
+    </div>
+  </div>
+<script type="text/javascript">
+  
+$(function(){
+  // Bind as an event handler
+  $('#giflist li a img').hover(function(){
+    // on mouse enter
+    var customdata = 'images/gif.gif';
+    $(this).attr('src',customdata); 
+  }, function(){
+    // on mouse leave
+    $(this).attr('src',$(this).attr('data-orig'));
+  });
+
+});
+</script>
+</body>
+</html>
