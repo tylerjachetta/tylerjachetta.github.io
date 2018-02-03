@@ -1,473 +1,344 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>Sorting Visualized</title>
-    <style>
-        html {
-            background: #212121;
-        }
-        
-        #bubbleSort {
-            width: 500px;
-           	margin: auto;
-           	background: #303030;
-           	border: 1px solid #636262;
-        }
-        
-        #selectionSort {
-           width: 500px;
-           margin: auto;
-           background: #303030;
-           border: 1px solid #636262;
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-        }
-        
-        #cocktailSort {
-            width: 500px;
-            margin: auto;
-            background: #303030;
-            border: 1px solid #636262;
-
-
-        }
-        
-        #gnomeSort {
-		    width: 500px;
-		    margin: auto;
-		    background: #303030;
-		    border: 1px solid #636262;
-
-
-        }
-        
-        #insertionSort {
-            width: 500px;
-           	margin: auto;
-           	background: #303030;
-           	border: 1px solid #636262;
-
-
-        }
-        
-        p {
-            font-family: monospace;
-            font-size: 21px;
-            color: #e9e9e9;
-            margin-top: 0px;
-            text-align: center;
-        }
-        
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin.css" rel="stylesheet">
 
 </head>
 
-<body>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    
-    <div id="bubbleSort">
-    <p> Bubble Sort</p>
-    </div>
-    <div id="selectionSort">
-    <p> Selection Sort</p>
-    </div>
-    <div id="cocktailSort">
-    <p> Cocktail Sort</p>
-    </div>
-    <div id="gnomeSort">
-    <p> Gnome Sort</p>
-    </div>
-    <div id="insertionSort">
-    <p> Insertion Sort</p>
-    </div>
-    <script>
-        var w = 500;
-        var h = 100;
-        var barPadding = 1;
+<body id="page-top">
 
-        var dataset = [];
-        var dataset2 = [];
-        var dataset3 = [];
-        var dataset4 = [];
-        var dataset5 = [];
-        var dataset6 = [];
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Sorting
+         Visualized</a>
+        <div class="collapse navbar-collapse" id="navbarExample">
+            <ul class="sidebar-nav navbar-nav">
+                <li class="nav-item">
+                Array Size:  
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-number UItoggle" disabled="disabled" data-type="minus" data-field="quant[1]">
+                              <span class="glyphicon glyphicon-minus">-</span>
+                          </button>
+                      </span>
+                      <input type="text" type="text" disabled="disabled" name="quant[1]" class="form-control input-number arryQuant" value="10" min="10" max="100">
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-number UItoggle" data-type="plus" data-field="quant[1]">
+                              <span class="glyphicon glyphicon-plus">+</span>
+                          </button>
+                      </span>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    Delay:  
+                </li>
+                <li class="nav-item">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-number UItoggle" data-type="minus" data-field="quant[2]">
+                              <span class="glyphicon glyphicon-minus">-</span>
+                          </button>
+                      </span>
+                      <input type="text" type="text" disabled="disabled" name="quant[2]" class="form-control input-number delayQuant" value="50" min="10" max="150">
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-number UItoggle" data-type="plus" data-field="quant[2]">
+                              <span class="glyphicon glyphicon-plus">+</span>
+                          </button>
+                      </span>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    Algorithm:  
+                </li>
+                <li class="nav-item UItoggle">
+                    <select class="custom-select btn-block algorithms UItoggle">
+                        <option value="Bubble Sort" selected>Bubble Sort</option>
+                        <option value="Selection Sort">Selection Sort</option>
+                        <option value="Cocktail Sort">Cocktail Sort</option>
+                        <option value="Insertion Sort" selected>Insertion Sort</option>
+                        <option value="Gnome Sort">Gnome Sort</option>
+                        <option value="Shell Sort">Shell Sort</option>
+                    </select>
+                </li>
+                <li class="nav-item">
+                    Array Composition:  
+                </li>
+                <li class="nav-item">
+                    <select class="custom-select btn-block dataComps UItoggle">
+                        <option value="Random" selected>Random</option>
+                        <option value="Reverse">Reverse</option>
+                        <option value="Nearly Sorted">Nearly Sorted</option>
+                        <option value="Few Unique">Few Unique</option>
+                    </select>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary btn-block beginSorting UItoggle">Begin Sorting</button>
+                    <button type="button" class="btn btn-danger btn-block stopSorting">Stop Sorting</button>
+                </li>
+            </ul>
+    </nav>
 
+    <div class="content-wrapper py-3">
+      <div class="row">
+            <div class="col-lg-4 newContainer" id="addContainer" onclick="addAlgorithm();">
+                <!-- Example Notifications Card -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Add an algorithm
+                    </div>
+                    <div class="list-group list-group-flush small">
+                        <span id="addMore">+</span>
+                    </div>
+                    <div class="card-footer small text-muted">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content-wrapper -->
 
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
 
-        for (i = 0; i < 50; i++)
-        {
-            dataset[i] = i + 1;
-        }
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/tether/tether.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-        var idArray = [];
-        //d3.select(container).selectAll("rect").remove();
-        for (var j = 0; j < dataset.length; j++)
-        {
-            idArray[j] = j;
-        }
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script type="text/javascript" src="vendor/d3.js"></script>
+    <script type="text/javascript" src="js/visualization.js"></script>
+
+    <script type="text/javascript">
+        var iterator = 0,
+            prevElement,
+            prevObj,
+            graph, 
+            selectedGraph,
+            graphOptions = {
+                'algorithms' : ['Bubble Sort', 'Selection Sort' ,'Cocktail Sort', 'Insertion Sort', 'Gnome Sort', 'Shell Sort'],
+                'dataComps' : ['Random', 'Reverse' , 'Few Unique']       
+            },
+            objArry = [];
+
+        //Initialize 5 random sorting panels
+        $(function() {
+            for(var i = 0; i < 5; i++) {
+                addAlgorithm();
+            }
+            manageClicks();
+            $('*[data-graph="0"]').trigger('click');
+        });
         
-        /*
-        var j = 0;
-        for (i = 0; i < 50; i++) 
-        { 
-          if(i % 5 == 0)
-          {
-            j += 5;
-          }
-            dataset[i] = j;
-        }
-        */
+        //For adding new sorting panel
+        function addAlgorithm () { 
+            if (iterator < 12) {
+                var randAlg = graphOptions.algorithms[Math.floor(Math.random() * graphOptions.algorithms.length)];
+                var randComp = graphOptions.dataComps[Math.floor(Math.random() * graphOptions.dataComps.length)];        
+                
+                $("#addContainer").before('\
+                    <div class="col-lg-4" data-graph="'+iterator +'">\
+                        <div class="card mb-3">\
+                            <div class="card-header">\
+                                <i class="fa fa-signal" aria-hidden="true"></i> <span id="algTitle">' + randAlg +'</span> - <span id="compTitle">' + randComp +'</span> <span id="delete"> <i class="fa fa-window-close UItoggle" aria-hidden="true"></i></span>\
+                            </div>\
+                            <div class="list-group list-group-flush small graph">\
+                            </div>\
+                            <div class="card-footer small text-muted">\
+                            </div>\
+                        </div>\
+                    </div>')
 
-        //dataset.reverse();
-       	shuffle(dataset);
-        dataset2 = dataset.slice();
-        dataset3 = dataset.slice();
-        dataset4 = dataset.slice();
-        dataset5 = dataset.slice();
-        dataset6 = dataset.slice();
-
-
-
-        bubbleSort(dataset);
-        selectionSort(dataset2);
-        cocktailSort(dataset3);
-        gnomeSort(dataset4);
-        insertionSort(dataset5);
-
-        function createGraph(items, container)
-        {
-
-        	d3.select(container)
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
-
-            d3.select(container).select("svg").selectAll("rect")
-                .data(idArray)
-                .enter()
-                .append("rect")
-                .attr("id", function(i)
-                {
-                    return "s" + i; // HTML id's cannot begin with #, so added s - short for selection
-
-                });
-
-            for (var i = 0; i < items.length; i++)
-            {
-                (function(i)
-                {
-                    setTimeout(function()
-                    {
-                        updateGraph(items[i], container);
-                        if(items[i] == items[items.length - 1])
-                        {
-                        	showSortedGraph(items[i], container);
-                        }
-                    }, i * 10);
-                })(i);
-                //Integer at end of the setTimeout is the delay between each iteration 
-            }
-        }
-
-     
-
-        function updateGraph(items, container)
-        {
-            for (var j = 0; j < items.length; j++)
-            {
-            	if (!($(container).find("#s" + j).attr('height') ==  items[j] * (100 / items.length)))
-            	{
-	                d3.select(container).select("svg").select("#s" + (j))
-	                .attr("x", function()
-	                {
-	                    return j * (w / items.length);
-	                })
-	                .attr("y", function()
-	                {
-	                    return h - items[j] * (100 / items.length);
-	                })
-	                .attr("width", w / items.length - barPadding)
-	                .attr("height", function()
-	                {
-	                    return items[j] * (100 / items.length);
-	                })
-	                .attr("fill", function()
-	                {
-	                	return "rgb(156,21,19)";
-
-	                });
-                }
-                else
-                {
-                	d3.select(container).select("svg").select("#s" + (j))
-                	.attr("fill", function()
-                	{
-                		return "rgb(255, 255, 255)";
-                	});
+                graph = new graphObject('*[data-graph="' + iterator + '"]', randComp, randAlg, $('.arryQuant').val(), $('.delayQuant').val());
+                objArry.push(graph);
+                
+                iterator++;
+                if(iterator == 12) {
+                    $("#addContainer").css('display','none');
                 }
             }
-
-
         }
 
-        function showSortedGraph(items, container)
-        {
-        	for (var i = 0; i < items.length; i++)
-        	{
-        	    d3.select(container).select("svg").select("#s" + (i))
-                .attr("fill", function()
-                {
-                	return "rgb(255, 255, 255)";
-                });
+        function manageClicks() {
+            //For closing sorting panels
+            $(document).on('click', '.fa-window-close', function(e){ 
+                e.stopPropagation();
+                
+                $(this).parents('.col-lg-4').remove()
+                objArry.splice($(this).parents('.col-lg-4').data('graph'), 1);
+                iterator--;
+                if(iterator < 12) {
+                    $("#addContainer").css('display','block');
+                }
 
-        	}
-        	
+                var elArry = $('*[data-graph]').get();
+                for(var j = 0; j < objArry.length; j++) {
+                    objArry[j].container = '*[data-graph="' + j + '"]';
+                    $(elArry[j]).attr('data-graph', j);
+                }
 
-	        for (var i = 0; i < items.length; i++)
-	        {
-	            (function(i)
-	            {
-	                setTimeout(function()
-	                {
-	                    d3.select(container).select("svg").select("#s" + (i))
-	                    .attr("fill", function()
-	                    {
-	                    	return "rgb(75, 152, 40)";
-	                    });
+                $('*[data-graph="0"]').trigger('click');
+            });
 
-	                    d3.select(container).select("svg").select("#s" + (i + 1))
-	                    .attr("fill", function()
-	                    {
-	                    	return "rgb(156,21,19)";
-	                    });
-	                }, i * 20);
-	            })(i);
+            //For selecting graphs
+            $(document).on('click', '*[data-graph]', function(){ 
+                selectedGraph = objArry[$(this).attr('data-graph')]
+                $(this).find('.card-header').css('background', '#c7c7c7');
+                if(this != prevElement) {
+                    $(prevElement).find('.card-header').css('background', '#f7f7f9');
+                }
+                prevElement = this;
+                $(".algorithms").val(selectedGraph.algorithm);
+                $(".dataComps").val(selectedGraph.dataComp);  
+            });
 
-	        }
+            //For begin sorting button
+            $(".beginSorting").click(function(){
+            	var disableTimer = [];
+                for(var i = 0; i < $('.graph').length; i++) {
+                	disableTimer.push(objArry[i].animate());
+                }
+                $('.stopSorting').css('display', 'block');
+                $('.newContainer').css('display', 'none');
+               	$('.UItoggle').prop('disabled', true);
+                returnUI = setTimeout(function() {
+                  $('.UItoggle').prop('disabled', false);
+                  if (iterator < 12) {
+                    $('.newContainer').css('display', 'block');
+                  }
+                  $('.stopSorting').css('display', 'none');
+                }, Math.max.apply(Math, disableTimer));
+            });
+
+            //For stop sorting button
+            $(".stopSorting").click(function(){
+                clearTimeout(returnUI)
+            	for (var i=0; i < clearTimeoutArray.length; i++) {
+	    	      clearTimeout(clearTimeoutArray[i]);
+	    	    }
+            	for(var i = 0; i < $('.graph').length; i++) {
+            		objArry[i].createInitialGraph();
+            	}
+            	$('.UItoggle').prop('disabled', false);
+                $('.stopSorting').css('display', 'none');
+                if (iterator < 12) {
+                    $('.newContainer').css('display', 'block');
+                }
+
+
+            });
+            
+            //For changing algorithms in select panel
+            $(".algorithms").change(function(){
+                selectedGraph.algorithm = this.value;
+                $(selectedGraph.container).find('#algTitle').text(this.value)
+            });
+        
+            //For changing array composition in select panel
+            $(".dataComps").change(function(){
+                selectedGraph.dataComp = this.value;
+                selectedGraph.dataSet = selectedGraph.createDataSet();
+                selectedGraph.createInitialGraph();
+                $(selectedGraph.container).find('#compTitle').text(this.value)
+            });
         }
 
-        function bubbleSort(items)
-        {
-            var swapped;
-            var displayArray = [];
-            do {
-                swapped = false;
-                for (var i = 0; i < items.length; i++)
-                {
-                    displayArray.push(items.slice());
-                    if (items[i] > items[i + 1])
-                    {
-                        var temp = items[i];
-                        items[i] = items[i + 1];
-                        items[i + 1] = temp;
-                        swapped = true;
+
+        // For Array Size and Delay UI
+        $('.btn-number').click(function(e){
+            e.preventDefault();
+            
+            fieldName = $(this).attr('data-field');
+            type      = $(this).attr('data-type');
+            var input = $("input[name='"+fieldName+"']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if(type == 'minus') {
+                    if(currentVal > input.attr('min')) {
+                        input.val(currentVal - 10).change();
+                    } 
+                    if(parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
                     }
-                }
-            } while (swapped);
-            createGraph(displayArray, "#bubbleSort");
-        }
 
-        function selectionSort(items)
-        {
+                } else if(type == 'plus') {
 
-            var len = items.length,
-                min;
-            var displayArray = [];
-
-            for (i = 0; i < len; i++)
-            {
-
-                min = i;
-                for (j = i + 1; j < len; j++)
-                {
-                    displayArray.push(items.slice());
-                    if (items[j] < items[min])
-                    {
-                        min = j;
+                    if(currentVal < input.attr('max')) {
+                        input.val(currentVal + 10).change();
                     }
-                }
-
-                //if the minimum isn't in the position, swap it
-                if (i != min)
-                {
-                    swap(items, i, min);
-                }
-
-            }
-            displayArray.push(items.slice());
-
-            createGraph(displayArray, "#selectionSort");
-        }
-
-        function cocktailSort(items)
-        {
-            var swapped;
-            var displayArray = [];
-
-            do {
-                for (var i = 0; i < items.length - 2; i++)
-                {
-                    displayArray.push(items.slice());
-                    if (items[i] > items[i + 1])
-                    {
-                        var temp = items[i];
-                        items[i] = items[i + 1];
-                        items[i + 1] = temp;
-                        swapped = true;
+                    if(parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
                     }
-                }
-                if (!swapped)
-                {
-                    break;
-                }
-                swapped = false;
-                for (i = items.length - 2; i > 0; i--)
-                {
-                    displayArray.push(items.slice());
-                    if (items[i] > items[i + 1])
-                    {
-                        var temp1 = items[i];
-                        items[i] = items[i + 1];
-                        items[i + 1] = temp1;
-                        swapped = true;
-                    }
-                }
-            } while (swapped);
 
-            createGraph(displayArray, "#cocktailSort")
-        }
-
-        function insertionSort(items)
-        {
-
-            var len = items.length,
-                value,
-                i,
-                j,
-                displayArray = [];
-
-            for (i = 0; i < len; i++)
-            {
-                value = items[i];
-                for (j = i - 1; j > -1 && items[j] > value; j--)
-                {
-                    items[j + 1] = items[j];
-                    displayArray.push(items.slice());
                 }
-                items[j + 1] = value;
+            } else {
+                input.val(0);
             }
-            displayArray.push(items.slice());
+        });
+        $('.input-number').focusin(function(){
+           $(this).data('oldValue', $(this).val());
+        });
+        $('.input-number').change(function() {
+            minValue =  parseInt($(this).attr('min'));
+            maxValue =  parseInt($(this).attr('max'));
+            valueCurrentArry = parseInt($('.arryQuant').val());
+            valueCurrentDelay = parseInt($('.delayQuant').val());
 
-            createGraph(displayArray, "#insertionSort")
-        }
-
-
-
-        function gnomeSort(items)
-        {
-            i = 0;
-            var displayArray = [];
-            while (i < items.length)
-            {
-                displayArray.push(items.slice());
-                if (i == 0 || items[i - 1] <= items[i])
-                {
-                    i++;
+            name = $(this).attr('name');
+            if(valueCurrentArry >= minValue) {
+                $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the minimum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+            if(valueCurrentArry <= maxValue) {
+                $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+            
+            if(!(objArry[0].size == valueCurrentArry)){
+                for(var i = 0; i < $('.graph').length; i++) {
+                    objArry[i].size = valueCurrentArry;
+                    objArry[i].dataSet = objArry[i].createDataSet();
+                    objArry[i].createInitialGraph();
                 }
-                else
-                {
-                    tmp = items[i];
-                    items[i] = items[i - 1];
-                    items[--i] = tmp;
+            } else {
+                for(var i = 0; i < $('.graph').length; i++) {
+                    objArry[i].delay = valueCurrentDelay;
                 }
             }
-            createGraph(displayArray, "#gnomeSort")
-
-        }
-
-        function mergeSort(items)
-        {
-            // Terminal case: 0 or 1 item arrays don't need sorting
-            if (items.length < 2)
-            {
-                return items;
-            }
-
-            var middle = Math.floor(items.length / 2),
-                left = items.slice(0, middle),
-                right = items.slice(middle);
-            return merge(mergeSort(left), mergeSort(right));
-        }
-
-        function merge(left, right)
-        {
-
-            var displayArray = [];
-
-            var result = [],
-                il = 0,
-                ir = 0;
-
-            while (il < left.length && ir < right.length)
-            {
-
-
-                if (left[il] < right[ir])
-                {
-                    result.push(left[il++]);
-                }
-                else
-                {
-                    result.push(right[ir++]);
-                }
-            }
-
-            return result.concat(left.slice(il)).concat(right.slice(ir));
-        }
-
-        function swap(items, firstIndex, secondIndex)
-        {
-            var temp = items[firstIndex];
-            items[firstIndex] = items[secondIndex];
-            items[secondIndex] = temp;
-        }
-
-
-
-        function shuffle(a)
-        {
-            var j, x, i;
-
-            for (i = a.length; i; i--)
-            {
-                j = Math.floor(Math.random() * i);
-                x = a[i - 1];
-                a[i - 1] = a[j];
-                a[j] = x;
-            }
-
-            return a;
-        }
-
-
-        function isSorted(data)
-        {
-            for (var i = 1; i < data.length; i++)
-            {
-                if (data[i - 1] >= data[i])
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+            
+        });
+        
+                    
     </script>
-
-
 
 </body>
 
