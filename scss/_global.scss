@@ -1,59 +1,80 @@
 // Global styling for this template
-// Body padding for the fixed navbar and sidebar
+
 body {
-    background: $gray-dark;
+  @include body-font;
+  padding-top: 54px;
+  color: $gray-600;
+}
+@media (min-width: 992px) {
+  body {
+    padding-top: 0;
+    padding-left: $sidebar-base-width;
+  }
 }
 
-body.fixed-nav {
-    padding-top: 54px;
-    @media (min-width: 992px) {
-        padding-top: 56px;
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include heading-font;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $gray-800;
 }
 
-.content-wrapper {
-    background: white;
-    @media (min-width: 992px) {
-        margin-left: 250px;
-    }
+h1 {
+  font-size: 6rem;
+  line-height: 5.5rem;
 }
 
-// Scroll to top button
-.scroll-to-top {
-    line-height: 45px;
-    position: fixed;
-    right: 15px;
-    bottom: 15px;
-    display: none;
-    width: 50px;
-    height: 50px;
+h2 {
+  font-size: 3.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p.lead {
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.subheading {
+  text-transform: uppercase;
+  font-weight: 500;
+  @include heading-font;
+  font-size: 1.5rem;
+}
+
+.social-icons {
+  a {
+    display: inline-block;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-color: $gray-700;
+    color: $white !important;
+    border-radius: 100%;
     text-align: center;
-    color: white;
-    background: fade-out($gray-dark, .5);
-    &:hover,
-    &:focus {
-        color: white;
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+    margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
     }
     &:hover {
-        background: $gray-dark;
+      background-color: $primary;
     }
+  }
 }
 
-// Additional Text Helper Class
-.smaller {
-    font-size: .7rem;
-}
-
-// Helper class for the overflow property
-.o-hidden {
-    overflow: hidden !important;
-}
-
-// Helper classes for z-index
-.z-0 {
-    z-index: 0;
-}
-
-.z-1 {
-    z-index: 1;
+.dev-icons {
+  font-size: 3rem;
+  .list-inline-item i {
+    &:hover {
+      color: $primary;
+    }
+  }
 }

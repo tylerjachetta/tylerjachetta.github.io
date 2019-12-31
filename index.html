@@ -3,342 +3,301 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Sorting Visualized</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <title>Tyler Jachetta</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
+  <!-- Custom styles for this template -->
+  <link href="css/resume.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
 </head>
 
 <body id="page-top">
 
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">Sorting
-         Visualized</a>
-        <div class="collapse navbar-collapse" id="navbarExample">
-            <ul class="sidebar-nav navbar-nav">
-                <li class="nav-item">
-                Array Size:  
-                    <div class="input-group">
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-default btn-number UItoggle"  disabled="disabled" data-type="minus" data-field="quant[1]">
-                              <span class="glyphicon glyphicon-minus">-</span>
-                          </button>
-                      </span>
-                      <input type="text" style="background: white;cursor: default;" disabled="disabled" name="quant[1]" class="form-control input-number arryQuant" value="10" min="10" max="100">
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-default btn-number UItoggle" data-type="plus" data-field="quant[1]">
-                              <span class="glyphicon glyphicon-plus">+</span>
-                          </button>
-                      </span>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    Delay:  
-                </li>
-                <li class="nav-item">
-                    <div class="input-group">
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-default btn-number UItoggle" data-type="minus" data-field="quant[2]">
-                              <span class="glyphicon glyphicon-minus">-</span>
-                          </button>
-                      </span>
-                      <input type="text" style="background: white;cursor: default;" disabled="disabled" name="quant[2]" class="form-control input-number delayQuant" value="50" min="10" max="150">
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-default btn-number UItoggle" data-type="plus" data-field="quant[2]">
-                              <span class="glyphicon glyphicon-plus">+</span>
-                          </button>
-                      </span>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    Algorithm:  
-                </li>
-                <li class="nav-item UItoggle">
-                    <select class="custom-select btn-block algorithms UItoggle">
-                        <option value="Bubble Sort" selected>Bubble Sort</option>
-                        <option value="Selection Sort">Selection Sort</option>
-                        <option value="Cocktail Sort">Cocktail Sort</option>
-                        <option value="Insertion Sort" selected>Insertion Sort</option>
-                        <option value="Gnome Sort">Gnome Sort</option>
-                        <option value="Shell Sort">Shell Sort</option>
-                    </select>
-                </li>
-                <li class="nav-item">
-                    Array Composition:  
-                </li>
-                <li class="nav-item">
-                    <select class="custom-select btn-block dataComps UItoggle">
-                        <option value="Random" selected>Random</option>
-                        <option value="Reverse">Reverse</option>
-                        <option value="Nearly Sorted">Nearly Sorted</option>
-                        <option value="Few Unique">Few Unique</option>
-                    </select>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary btn-block beginSorting UItoggle">Begin Sorting</button>
-                    <button type="button" class="btn btn-danger btn-block stopSorting">Stop Sorting</button>
-                </li>
-            </ul>
-    </nav>
-
-    <div class="content-wrapper py-3">
-      <div class="row">
-            <div class="col-lg-4 newContainer" id="addContainer" onclick="addAlgorithm();">
-                <!-- Example Notifications Card -->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Add an algorithm
-                    </div>
-                    <div class="list-group list-group-flush small">
-                        <span id="addMore">+</span>
-                    </div>
-                    <div class="card-footer small text-muted">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.content-wrapper -->
-
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-chevron-up"></i>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg mb-1" id="name">Tyler Jachetta</span>
+      <span class="d-block d-lg mb-3" id="email">trjachetta@ucdavis.edu</span>
+      <span class="d-none d-lg-block">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+      </span>
     </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#education">Education</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#intern-experience">Internships</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#work-experience">Work Experience</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
+        </li>
+      </ul>
+    </div>
+    <div class="social-media-icons collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="list-inline">
+         <li class="list-inline-item social-icon"><a href="https://www.linkedin.com/in/tylerjachetta"><i class="fab fa-linkedin-in"></i></a></li>
+         <li class="list-inline-item social-icon"><i class="fab fa-github"></i></li>
+         <li class="list-inline-item social-icon"><i class="fas fa-file-pdf"></i></li>
+      </ul>
+    </div>     
+  </nav>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/tether/tether.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <div class="container-fluid p-0">
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
+      <div class="w-100">
+        <h2 class="mb-4">Education</h2>
 
-    <script type="text/javascript" src="vendor/d3.js"></script>
-    <script type="text/javascript" src="js/visualization.js"></script>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">University of California, Davis</h3>
+            <div class="subheading mb-3">Bachelor of Science in Computer Science</div>
+            <p>GPA: 4.00</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">Expected 2021</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script type="text/javascript">
-        var iterator = 0,
-            prevElement,
-            prevObj,
-            graph, 
-            selectedGraph,
-            graphOptions = {
-                'algorithms' : ['Bubble Sort', 'Selection Sort' ,'Cocktail Sort', 'Insertion Sort', 'Gnome Sort', 'Shell Sort'],
-                'dataComps' : ['Random', 'Reverse' , 'Few Unique']       
-            },
-            objArry = [];
+    <hr class="m-0">
 
-        //Initialize 5 random sorting panels
-        $(function() {
-            for(var i = 0; i < 5; i++) {
-                addAlgorithm();
-            }
-            manageClicks();
-            $('*[data-graph="0"]').trigger('click');
-        });
-        
-        //For adding new sorting panel
-        function addAlgorithm () { 
-            if (iterator < 12) {
-                var randAlg = graphOptions.algorithms[Math.floor(Math.random() * graphOptions.algorithms.length)];
-                var randComp = graphOptions.dataComps[Math.floor(Math.random() * graphOptions.dataComps.length)];        
-                
-                $("#addContainer").before('\
-                    <div class="col-lg-4" data-graph="'+iterator +'">\
-                        <div class="card mb-3">\
-                            <div class="card-header">\
-                                <i class="fa fa-signal" aria-hidden="true"></i> <span id="algTitle">' + randAlg +'</span> - <span id="compTitle">' + randComp +'</span> <span id="delete"> <i class="fa fa-window-close UItoggle" aria-hidden="true"></i></span>\
-                            </div>\
-                            <div class="list-group list-group-flush small graph">\
-                            </div>\
-                            <div class="card-footer small text-muted">\
-                            </div>\
-                        </div>\
-                    </div>')
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="intern-experience">
+      <div class="w-100">
+        <h2 class="mb-4">Internship Experience</h2>
 
-                graph = new graphObject('*[data-graph="' + iterator + '"]', randComp, randAlg, $('.arryQuant').val(), $('.delayQuant').val());
-                objArry.push(graph);
-                
-                iterator++;
-                if(iterator == 12) {
-                    $("#addContainer").css('display','none');
-                }
-            }
-        }
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Web Developer Intern</h3>
+            <div class="subheading mb-3">EandM</div>
+            <ul class="fa-ul mb-0">
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Designed and developed an online tool to manage a SQL database from a web application
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Implemented a program with VB and SQL that tracks user activity on a web browser to determine outdated functionalities in the company's internal site 
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Designed and began development of online ticketing system using the .NET framework
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Developed interactive data visualization tools using C#, VB, and SQL alongside project managers
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Worked closely with a team of software engineers as I tested their programs for bugs 
+              </li>
+            </ul>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">June 2019 - August 2019</span>
+          </div>
+        </div>
 
-        function manageClicks() {
-            //For closing sorting panels
-            $(document).on('click', '.fa-window-close', function(e){ 
-                e.stopPropagation();
-                
-                $(this).parents('.col-lg-4').remove()
-                objArry.splice($(this).parents('.col-lg-4').data('graph'), 1);
-                iterator--;
-                if(iterator < 12) {
-                    $("#addContainer").css('display','block');
-                }
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Web Developer Intern</h3>
+            <div class="subheading mb-3">Infinite Website Design</div>
+            <ul class="fa-ul mb-0">
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Utilized Bootstrap and other front-end frameworks to migrate old websites to a modern and mobile compatible version
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Updated existing sites for improved user-interaction and search engine optimization
+              </li>
+            </ul>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">August 2014 - March 2015</span>
+          </div>
+        </div>
 
-                var elArry = $('*[data-graph]').get();
-                for(var j = 0; j < objArry.length; j++) {
-                    objArry[j].container = '*[data-graph="' + j + '"]';
-                    $(elArry[j]).attr('data-graph', j);
-                }
+      </div>
 
-                $('*[data-graph="0"]').trigger('click');
-            });
+    </section>
 
-            //For selecting graphs
-            $(document).on('click', '*[data-graph]', function(){ 
-                selectedGraph = objArry[$(this).attr('data-graph')]
-                $(this).find('.card-header').css('background', '#c7c7c7');
-                if(this != prevElement) {
-                    $(prevElement).find('.card-header').css('background', '#f7f7f9');
-                }
-                prevElement = this;
-                $(".algorithms").val(selectedGraph.algorithm);
-                $(".dataComps").val(selectedGraph.dataComp);  
-            });
+    <hr class="m-0">
 
-            //For begin sorting button
-            $(".beginSorting").click(function(){
-            	var disableTimer = [];
-                for(var i = 0; i < $('.graph').length; i++) {
-                	disableTimer.push(objArry[i].animate());
-                }
-                $('.stopSorting').css('display', 'block');
-                $('.newContainer').css('display', 'none');
-               	$('.UItoggle').prop('disabled', true);
-                returnUI = setTimeout(function() {
-                  $('.UItoggle').prop('disabled', false);
-                  if (iterator < 12) {
-                    $('.newContainer').css('display', 'block');
-                  }
-                  $('.stopSorting').css('display', 'none');
-                }, Math.max.apply(Math, disableTimer));
-            });
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="projects">
+      <div class="w-100">
+        <h2 class="mb-4">Projects</h2>
 
-            //For stop sorting button
-            $(".stopSorting").click(function(){
-                clearTimeout(returnUI)
-            	for (var i=0; i < clearTimeoutArray.length; i++) {
-	    	      clearTimeout(clearTimeoutArray[i]);
-	    	    }
-            	for(var i = 0; i < $('.graph').length; i++) {
-            		objArry[i].createInitialGraph();
-            	}
-            	$('.UItoggle').prop('disabled', false);
-                $('.stopSorting').css('display', 'none');
-                if (iterator < 12) {
-                    $('.newContainer').css('display', 'block');
-                }
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Sorting Visualized</h3>
+            <div class="project-img mt-2 mb-2">
+              <img src="img/proj1.jpg" alt="Sorting Algorithms Visualized" class="img-thumbnail">
+              <div class="overlay">
+                <div class="text"><i class="fas fa-link"></i></div>
+              </div>
+            </div>
+            <p>Sorting Visualized is an educational website that allows users to visually compare the efficiency and behavior of sorting algorithms.</p>
+          </div>
+        </div>
 
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Binary Search Trees Visualized</h3>
+            <div class="project-img mt-2 mb-2">
+              <img src="img/proj2.jpg" alt="Sorting Algorithms Visualized" class="img-thumbnail">
+              <div class="overlay">
+                <div class="text"><i class="fas fa-link"></i></div>
+              </div>
+            </div>
+            <p>Binary Search Trees Visualized is a website that shares the same goal as my previous project. However, this project visually compares different types of binary search trees. </p>
+          </div>
+        </div>
+    </section>
 
-            });
-            
-            //For changing algorithms in select panel
-            $(".algorithms").change(function(){
-                selectedGraph.algorithm = this.value;
-                $(selectedGraph.container).find('#algTitle').text(this.value)
-            });
-        
-            //For changing array composition in select panel
-            $(".dataComps").change(function(){
-                selectedGraph.dataComp = this.value;
-                selectedGraph.dataSet = selectedGraph.createDataSet();
-                selectedGraph.createInitialGraph();
-                $(selectedGraph.container).find('#compTitle').text(this.value)
-            });
-        }
+    <hr class="m-0">
 
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="work-experience">
+      <div class="w-100">
+        <h2 class="mb-4">Relevant Work Experience</h2>
 
-        // For Array Size and Delay UI
-        $('.btn-number').click(function(e){
-            e.preventDefault();
-            
-            fieldName = $(this).attr('data-field');
-            type      = $(this).attr('data-type');
-            var input = $("input[name='"+fieldName+"']");
-            var currentVal = parseInt(input.val());
-            if (!isNaN(currentVal)) {
-                if(type == 'minus') {
-                    if(currentVal > input.attr('min')) {
-                        input.val(currentVal - 10).change();
-                    } 
-                    if(parseInt(input.val()) == input.attr('min')) {
-                        $(this).attr('disabled', true);
-                    }
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">IT Support Assistant</h3>
+            <div class="subheading mb-3">Tri-County Garage Door</div>
+            <ul class="fa-ul mb-0">
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Ensured all internet connections, phone services, and workstations were functioning at all times
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Communicated with customers to schedule on-site repairs and installations 
+              </li>
+            </ul>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">January 2019 - June 2019</span>
+          </div>
+        </div>
 
-                } else if(type == 'plus') {
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Mathematics Tutor</h3>
+            <div class="subheading mb-3">Santa Rosa Junior College</div>
+            <ul class="fa-ul mb-0">
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Conducted one-on-one tutoring sessions for fellow students in Algebra, Multivariable Calculus, and Linear Algebra courses 
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Ensured student success by demonstrating academic strategies that guarantee improved homework and exam scores
+              </li>
+            </ul>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">October 2018 - December 2018</span>
+          </div>
+        </div>
 
-                    if(currentVal < input.attr('max')) {
-                        input.val(currentVal + 10).change();
-                    }
-                    if(parseInt(input.val()) == input.attr('max')) {
-                        $(this).attr('disabled', true);
-                    }
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">IT Support Representative</h3>
+            <div class="subheading mb-3">Sonic</div>
+            <ul class="fa-ul mb-0">
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Resolved customers’ internet connectivity, email, and web hosting related issues
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Gained experience configuring and troubleshooting fiber optic business connections
+              </li>
+              <li>
+                <i class="fa-li fa fa-circle"></i>
+                Configured customers’ hardware to ensure optimal service
+              </li>
+            </ul>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">June 2016 - January 2017 & June 2018 - October 2018  </span>
+          </div>
+        </div>
 
-                }
-            } else {
-                input.val(0);
-            }
-        });
-        $('.input-number').focusin(function(){
-           $(this).data('oldValue', $(this).val());
-        });
-        $('.input-number').change(function() {
-            minValue =  parseInt($(this).attr('min'));
-            maxValue =  parseInt($(this).attr('max'));
-            valueCurrentArry = parseInt($('.arryQuant').val());
-            valueCurrentDelay = parseInt($('.delayQuant').val());
+      </div>
 
-            name = $(this).attr('name');
-            if(valueCurrentArry >= minValue) {
-                $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-            } else {
-                alert('Sorry, the minimum value was reached');
-                $(this).val($(this).data('oldValue'));
-            }
-            if(valueCurrentArry <= maxValue) {
-                $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-            } else {
-                alert('Sorry, the maximum value was reached');
-                $(this).val($(this).data('oldValue'));
-            }
-            
-            if(!(objArry[0].size == valueCurrentArry)){
-                for(var i = 0; i < $('.graph').length; i++) {
-                    objArry[i].size = valueCurrentArry;
-                    objArry[i].dataSet = objArry[i].createDataSet();
-                    objArry[i].createInitialGraph();
-                }
-            } else {
-                for(var i = 0; i < $('.graph').length; i++) {
-                    objArry[i].delay = valueCurrentDelay;
-                }
-            }
-            
-        });
-        
-                    
-    </script>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
+      <div class="w-100">
+        <h2 class="mb-4">Technical Skills</h2>
+        <div class="subheading mb-3">Programming Languages</div>
+        <ul class="fa-ul">
+          <li>
+            <i class="fa-li fa fa-circle"></i>
+            C++, C#, JavaScript, VB, SQL, HTML, CSS
+          </li>
+        </ul>
+        <div class="subheading mb-3">Technologies</div>
+        <ul class="fa-ul">
+          <li>
+            <i class="fa-li fa fa-circle"></i>
+            Visual Studio, .NET, jQuery, D3.js, Bootstrap, Photoshop and Premiere Pro (Adobe Certified Associate)
+          </li>
+          <li>
+            <i class="fa-li fa fa-circle"></i>
+            Experience with troubleshooting networks according to the OSI model
+          </li>
+          <li>
+            <i class="fa-li fa fa-circle"></i>
+            Experience with Windows, Linux, and Macintosh operating systems in a professional setting
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/resume.min.js"></script>
 
 </body>
 
