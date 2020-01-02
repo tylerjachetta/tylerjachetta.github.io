@@ -29,6 +29,11 @@ p {
 }
 
 #email {
+	-moz-user-select: text;
+	-khtml-user-select: text;
+	-webkit-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
 	font-size: 0.80em;
 	letter-spacing: .03rem;
 }
